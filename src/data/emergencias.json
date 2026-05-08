@@ -1,0 +1,125 @@
+[
+{
+  "id": "atragantamiento",
+  "titulo": "Atragantamiento",
+  "urgencia": "critico",
+  "llamar_911": true,
+  "preguntas": [
+    { "id":"p1", "texto":"puede hablar, toser o respirar?",
+      "opciones":[
+        {"respuesta":"Si, aunque con dificultad","siguiente":"p2"},
+        {"respuesta":"No, no puede","siguiente":"heimlich"}
+      ]},
+    { "id":"p2", "texto":"Tiene mas de 1 anno de edad?",
+      "opciones":[
+        {"respuesta":"Si, adulto o nino mayor","siguiente":"toser_activo"},
+        {"respuesta":"No, bebe menor de 1 anno","siguiente":"heimlich_bebe"}
+      ]}
+  ],
+  "protocolos": {
+    "heimlich": { "nombre":"Maniobra de Heimlich",
+      "pasos":[
+        {"n":1,"texto":"Parate detras y rodea la cintura con tus brazos.","timer":null},
+        {"n":2,"texto":"Cierra un puno entre ombligo y costillas, pulgar adentro.","timer":null},
+        {"n":3,"texto":"Agarra tu puno con la otra mano.","timer":null},
+        {"n":4,"texto":"5 compresiones hacia adentro y arriba. Repite hasta que salga.","timer":30},
+        {"n":5,"texto":"Si pierde consciencia, inicia RCP y llama al 911.","timer":null}
+      ]},
+    "toser_activo": { "nombre":"Obstruccion parcial: anima a toser",
+      "pasos":[
+        {"n":1,"texto":"Anima a la persona a toser con fuerza.","timer":null},
+        {"n":2,"texto":"No le des palmadas si esta tosiendo.","timer":null},
+        {"n":3,"texto":"Si deja de poder toser, aplica Heimlich.","timer":null}
+      ]},
+    "heimlich_bebe": { "nombre":"Para bebe menor de 1 anno",
+      "pasos":[
+        {"n":1,"texto":"Bebe boca abajo en tu antebrazo, cabeza mas baja.","timer":null},
+        {"n":2,"texto":"5 palmadas firmes entre los omoplatos.","timer":null},
+        {"n":3,"texto":"Voltea al bebe boca arriba.","timer":null},
+        {"n":4,"texto":"5 compresiones en el centro del pecho con 2 dedos.","timer":null},
+        {"n":5,"texto":"Repite el ciclo. Llama al 911.","timer":30}
+      ]}
+  },
+  "fuente": "Cruz Roja Internacional 2023"
+},
+{
+  "id": "paro-cardiaco",
+  "titulo": "Paro cardiaco",
+  "urgencia": "critico",
+  "llamar_911": true,
+  "preguntas": [
+    { "id":"p1", "texto":"La persona respira con normalidad?",
+      "opciones":[
+        {"respuesta":"No respira o hace jadeos ocasionales","siguiente":"rcp"},
+        {"respuesta":"Respira pero esta inconsciente","siguiente":"posicion_lateral"}
+      ]}
+  ],
+  "protocolos": {
+    "rcp": { "nombre":"RCP basica (Reanimacion Cardiopulmonar)",
+      "pasos":[
+        {"n":1,"texto":"Llama al 911 ahora o pide a alguien que lo haga.","timer":null},
+        {"n":2,"texto":"Coloca a la persona boca arriba en superficie firme.","timer":null},
+        {"n":3,"texto":"Entrelaza manos en el centro del pecho. Brazos rectos.","timer":null},
+        {"n":4,"texto":"30 compresiones al ritmo de Stayin Alive. Fuerte y rapido.","timer":18},
+        {"n":5,"texto":"Inclina la cabeza, levanta el menton, 2 respiraciones boca a boca.","timer":null},
+        {"n":6,"texto":"Repite: 30 compresiones + 2 respiraciones. No pares.","timer":18}
+      ]},
+    "posicion_lateral": { "nombre":"Posicion lateral de seguridad",
+      "pasos":[
+        {"n":1,"texto":"Coloca el brazo cercano en angulo recto al cuerpo.","timer":null},
+        {"n":2,"texto":"Lleva el brazo lejano sobre el pecho, dorso en la mejilla.","timer":null},
+        {"n":3,"texto":"Dobla la rodilla lejana hacia arriba.","timer":null},
+        {"n":4,"texto":"Jala esa rodilla para voltear a la persona de lado.","timer":null},
+        {"n":5,"texto":"Ajusta la mano bajo la mejilla. Monitorea la respiracion.","timer":null}
+      ]}
+  },
+  "fuente": "American Heart Association, Guia de RCP 2023"
+},
+{
+  "id": "quemaduras",
+  "titulo": "Quemaduras",
+  "urgencia": "alto",
+  "llamar_911": false,
+  "preguntas": [
+    { "id":"p1", "texto":"Como ocurrio la quemadura?",
+      "opciones":[
+        {"respuesta":"Fuego, liquido caliente, vapor u objeto caliente","siguiente":"p2"},
+        {"respuesta":"Electricidad o producto quimico","siguiente":"electrica_quimica"}
+      ]},
+    { "id":"p2", "texto":"La quemadura es grande o esta en cara, manos, pies o genitales?",
+      "opciones":[
+        {"respuesta":"No, es pequena (menor al tamano de la palma)","siguiente":"p3"},
+        {"respuesta":"Si, es grande o esta en zona sensible","siguiente":"cubrir_y_hospital"}
+      ]},
+    { "id":"p3", "texto":"Como se ve la quemadura?",
+      "opciones":[
+        {"respuesta":"Solo enrojecimiento, sin ampollas","siguiente":"agua_fria"},
+        {"respuesta":"Tiene ampollas, piel blanca o parece profunda","siguiente":"cubrir_y_hospital"}
+      ]}
+  ],
+  "protocolos": {
+    "agua_fria": { "nombre":"Quemadura leve: enfriar con agua",
+      "pasos":[
+        {"n":1,"texto":"Enfria con agua fria (no helada) durante 10 minutos minimo.","timer":600},
+        {"n":2,"texto":"No uses hielo, pasta dental ni cremas caseras.","timer":null},
+        {"n":3,"texto":"Cubre con gasa esteril o tela limpia. No aprietes.","timer":null},
+        {"n":4,"texto":"Si el dolor persiste mas de 2 horas o hay ampollas, ve al medico.","timer":null}
+      ]},
+    "cubrir_y_hospital": { "nombre":"Quemadura grave: cubrir y buscar atencion",
+      "pasos":[
+        {"n":1,"texto":"Llama al 911 si la quemadura es muy extensa.","timer":null},
+        {"n":2,"texto":"No retires ropa pegada a la piel. No revientes ampollas.","timer":null},
+        {"n":3,"texto":"Cubre con gasa esteril humeda o tela limpia muy suavemente.","timer":null},
+        {"n":4,"texto":"Mantén a la persona abrigada para evitar shock.","timer":null},
+        {"n":5,"texto":"Lleva a urgencias inmediatamente.","timer":null}
+      ]},
+    "electrica_quimica": { "nombre":"Quemadura electrica o quimica",
+      "pasos":[
+        {"n":1,"texto":"Electrica: NO toques a la persona si aun esta en contacto. Corta la corriente.","timer":null},
+        {"n":2,"texto":"Quimica: retira ropa con guantes. Enjuaga con agua 20 minutos.","timer":1200},
+        {"n":3,"texto":"Llama al 911. Este tipo requiere atencion medica urgente.","timer":null}
+      ]}
+  },
+  "fuente": "Cruz Roja Internacional 2023"
+}
+]
