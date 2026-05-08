@@ -10,10 +10,10 @@
         {"respuesta":"Si, aunque con dificultad","siguiente":"p2"},
         {"respuesta":"No, no puede","siguiente":"heimlich"}
       ]},
-    { "id":"p2", "texto":"Tiene mas de 1 anno de edad?",
+    { "id":"p2", "texto":"Tiene mas de 1 año de edad?",
       "opciones":[
         {"respuesta":"Si, adulto o nino mayor","siguiente":"toser_activo"},
-        {"respuesta":"No, bebe menor de 1 anno","siguiente":"heimlich_bebe"}
+        {"respuesta":"No, bebe menor de 1 año","siguiente":"heimlich_bebe"}
       ]}
   ],
   "protocolos": {
@@ -31,7 +31,7 @@
         {"n":2,"texto":"No le des palmadas si esta tosiendo.","timer":null},
         {"n":3,"texto":"Si deja de poder toser, aplica Heimlich.","timer":null}
       ]},
-    "heimlich_bebe": { "nombre":"Para bebe menor de 1 anno",
+    "heimlich_bebe": { "nombre":"Para bebe menor de 1 año",
       "pasos":[
         {"n":1,"texto":"Bebe boca abajo en tu antebrazo, cabeza mas baja.","timer":null},
         {"n":2,"texto":"5 palmadas firmes entre los omoplatos.","timer":null},
