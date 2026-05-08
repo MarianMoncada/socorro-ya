@@ -1,125 +1,1099 @@
 [
-{
-  "id": "atragantamiento",
-  "titulo": "Atragantamiento",
-  "urgencia": "critico",
-  "llamar_911": true,
-  "preguntas": [
-    { "id":"p1", "texto":"puede hablar, toser o respirar?",
-      "opciones":[
-        {"respuesta":"Si, aunque con dificultad","siguiente":"p2"},
-        {"respuesta":"No, no puede","siguiente":"heimlich"}
-      ]},
-    { "id":"p2", "texto":"Tiene mas de 1 año de edad?",
-      "opciones":[
-        {"respuesta":"Si, adulto o nino mayor","siguiente":"toser_activo"},
-        {"respuesta":"No, bebe menor de 1 año","siguiente":"heimlich_bebe"}
-      ]}
-  ],
-  "protocolos": {
-    "heimlich": { "nombre":"Maniobra de Heimlich",
-      "pasos":[
-        {"n":1,"texto":"Parate detras y rodea la cintura con tus brazos.","timer":null},
-        {"n":2,"texto":"Cierra un puno entre ombligo y costillas, pulgar adentro.","timer":null},
-        {"n":3,"texto":"Agarra tu puno con la otra mano.","timer":null},
-        {"n":4,"texto":"5 compresiones hacia adentro y arriba. Repite hasta que salga.","timer":30},
-        {"n":5,"texto":"Si pierde consciencia, inicia RCP y llama al 911.","timer":null}
-      ]},
-    "toser_activo": { "nombre":"Obstruccion parcial: anima a toser",
-      "pasos":[
-        {"n":1,"texto":"Anima a la persona a toser con fuerza.","timer":null},
-        {"n":2,"texto":"No le des palmadas si esta tosiendo.","timer":null},
-        {"n":3,"texto":"Si deja de poder toser, aplica Heimlich.","timer":null}
-      ]},
-    "heimlich_bebe": { "nombre":"Para bebe menor de 1 año",
-      "pasos":[
-        {"n":1,"texto":"Bebe boca abajo en tu antebrazo, cabeza mas baja.","timer":null},
-        {"n":2,"texto":"5 palmadas firmes entre los omoplatos.","timer":null},
-        {"n":3,"texto":"Voltea al bebe boca arriba.","timer":null},
-        {"n":4,"texto":"5 compresiones en el centro del pecho con 2 dedos.","timer":null},
-        {"n":5,"texto":"Repite el ciclo. Llama al 911.","timer":30}
-      ]}
+  {
+    "id": "atragantamiento",
+    "titulo": "Atragantamiento",
+    "urgencia": "critico",
+    "llamar_911": true,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿La persona puede hablar, toser o respirar?",
+        "opciones": [
+          {
+            "respuesta": "Sí, aunque con dificultad",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "No, no puede hacer nada de eso",
+            "siguiente": "heimlich"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿La persona tiene más de 1 año de edad?",
+        "opciones": [
+          {
+            "respuesta": "Sí, es niño mayor o adulto",
+            "siguiente": "toser_activo"
+          },
+          {
+            "respuesta": "No, es bebé menor de 1 año",
+            "siguiente": "heimlich_bebe"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "heimlich": {
+        "nombre": "Maniobra de Heimlich",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Párate detrás de la persona y rodea su cintura con tus brazos.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Cierra un puño entre el ombligo y las costillas, pulgar hacia adentro.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Agarra tu puño con la otra mano.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Haz 5 compresiones hacia adentro y arriba con fuerza. Repite hasta que salga.",
+            "timer": 30
+          },
+          {
+            "n": 5,
+            "texto": "Si pierde la consciencia, inicia RCP y llama al 911.",
+            "timer": null
+          }
+        ]
+      },
+      "toser_activo": {
+        "nombre": "Obstrucción parcial: anima a toser",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Anima a la persona a toser con fuerza de forma continua.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "No le des palmadas ni la interrumpas si está tosiendo.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Quédate a su lado. Si deja de poder toser, aplica la maniobra de Heimlich.",
+            "timer": null
+          }
+        ]
+      },
+      "heimlich_bebe": {
+        "nombre": "Primeros auxilios para bebé menor de 1 año",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Sostén al bebé boca abajo en tu antebrazo, cabeza más baja que el cuerpo.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Da 5 palmadas firmes entre los omóplatos con la palma.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Voltea al bebé boca arriba sobre tu otro antebrazo.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Da 5 compresiones en el centro del pecho con 2 dedos.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Repite el ciclo. Llama al 911 inmediatamente.",
+            "timer": 30
+          }
+        ]
+      }
+    },
+    "fuente": "Cruz Roja Internacional, Primeros Auxilios 2023"
   },
-  "fuente": "Cruz Roja Internacional 2023"
-},
-{
-  "id": "paro-cardiaco",
-  "titulo": "Paro cardiaco",
-  "urgencia": "critico",
-  "llamar_911": true,
-  "preguntas": [
-    { "id":"p1", "texto":"La persona respira con normalidad?",
-      "opciones":[
-        {"respuesta":"No respira o hace jadeos ocasionales","siguiente":"rcp"},
-        {"respuesta":"Respira pero esta inconsciente","siguiente":"posicion_lateral"}
-      ]}
-  ],
-  "protocolos": {
-    "rcp": { "nombre":"RCP basica (Reanimacion Cardiopulmonar)",
-      "pasos":[
-        {"n":1,"texto":"Llama al 911 ahora o pide a alguien que lo haga.","timer":null},
-        {"n":2,"texto":"Coloca a la persona boca arriba en superficie firme.","timer":null},
-        {"n":3,"texto":"Entrelaza manos en el centro del pecho. Brazos rectos.","timer":null},
-        {"n":4,"texto":"30 compresiones al ritmo de Stayin Alive. Fuerte y rapido.","timer":18},
-        {"n":5,"texto":"Inclina la cabeza, levanta el menton, 2 respiraciones boca a boca.","timer":null},
-        {"n":6,"texto":"Repite: 30 compresiones + 2 respiraciones. No pares.","timer":18}
-      ]},
-    "posicion_lateral": { "nombre":"Posicion lateral de seguridad",
-      "pasos":[
-        {"n":1,"texto":"Coloca el brazo cercano en angulo recto al cuerpo.","timer":null},
-        {"n":2,"texto":"Lleva el brazo lejano sobre el pecho, dorso en la mejilla.","timer":null},
-        {"n":3,"texto":"Dobla la rodilla lejana hacia arriba.","timer":null},
-        {"n":4,"texto":"Jala esa rodilla para voltear a la persona de lado.","timer":null},
-        {"n":5,"texto":"Ajusta la mano bajo la mejilla. Monitorea la respiracion.","timer":null}
-      ]}
+  {
+    "id": "paro-cardiaco",
+    "titulo": "Paro cardíaco",
+    "urgencia": "critico",
+    "llamar_911": true,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿La persona respira con normalidad?",
+        "opciones": [
+          {
+            "respuesta": "No respira o solo hace jadeos ocasionales",
+            "siguiente": "rcp"
+          },
+          {
+            "respuesta": "Respira pero está inconsciente",
+            "siguiente": "posicion_lateral"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "rcp": {
+        "nombre": "RCP básica (Reanimación Cardiopulmonar)",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 ahora o pide a alguien que lo haga.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Coloca a la persona boca arriba sobre una superficie firme y plana.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Entrelaza tus manos y colócalas en el centro del pecho. Brazos rectos.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Presiona fuerte y rápido: 30 compresiones al ritmo de Stayin Alive.",
+            "timer": 18
+          },
+          {
+            "n": 5,
+            "texto": "Inclina la cabeza hacia atrás, levanta el mentón y da 2 respiraciones boca a boca.",
+            "timer": null
+          },
+          {
+            "n": 6,
+            "texto": "Repite: 30 compresiones + 2 respiraciones. No te detengas hasta que llegue ayuda.",
+            "timer": 18
+          }
+        ]
+      },
+      "posicion_lateral": {
+        "nombre": "Posición lateral de seguridad",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Coloca el brazo más cercano a ti en ángulo recto respecto al cuerpo.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Lleva el brazo lejano sobre el pecho; apoya el dorso de esa mano en la mejilla.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Dobla la rodilla lejana hacia arriba.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Jala esa rodilla hacia ti para voltear a la persona de lado.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Ajusta la mano bajo la mejilla. Monitorea que siga respirando.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "fuente": "American Heart Association, Guía de RCP 2023"
   },
-  "fuente": "American Heart Association, Guia de RCP 2023"
-},
-{
-  "id": "quemaduras",
-  "titulo": "Quemaduras",
-  "urgencia": "alto",
-  "llamar_911": false,
-  "preguntas": [
-    { "id":"p1", "texto":"Como ocurrio la quemadura?",
-      "opciones":[
-        {"respuesta":"Fuego, liquido caliente, vapor u objeto caliente","siguiente":"p2"},
-        {"respuesta":"Electricidad o producto quimico","siguiente":"electrica_quimica"}
-      ]},
-    { "id":"p2", "texto":"La quemadura es grande o esta en cara, manos, pies o genitales?",
-      "opciones":[
-        {"respuesta":"No, es pequena (menor al tamano de la palma)","siguiente":"p3"},
-        {"respuesta":"Si, es grande o esta en zona sensible","siguiente":"cubrir_y_hospital"}
-      ]},
-    { "id":"p3", "texto":"Como se ve la quemadura?",
-      "opciones":[
-        {"respuesta":"Solo enrojecimiento, sin ampollas","siguiente":"agua_fria"},
-        {"respuesta":"Tiene ampollas, piel blanca o parece profunda","siguiente":"cubrir_y_hospital"}
-      ]}
-  ],
-  "protocolos": {
-    "agua_fria": { "nombre":"Quemadura leve: enfriar con agua",
-      "pasos":[
-        {"n":1,"texto":"Enfria con agua fria (no helada) durante 10 minutos minimo.","timer":600},
-        {"n":2,"texto":"No uses hielo, pasta dental ni cremas caseras.","timer":null},
-        {"n":3,"texto":"Cubre con gasa esteril o tela limpia. No aprietes.","timer":null},
-        {"n":4,"texto":"Si el dolor persiste mas de 2 horas o hay ampollas, ve al medico.","timer":null}
-      ]},
-    "cubrir_y_hospital": { "nombre":"Quemadura grave: cubrir y buscar atencion",
-      "pasos":[
-        {"n":1,"texto":"Llama al 911 si la quemadura es muy extensa.","timer":null},
-        {"n":2,"texto":"No retires ropa pegada a la piel. No revientes ampollas.","timer":null},
-        {"n":3,"texto":"Cubre con gasa esteril humeda o tela limpia muy suavemente.","timer":null},
-        {"n":4,"texto":"Mantén a la persona abrigada para evitar shock.","timer":null},
-        {"n":5,"texto":"Lleva a urgencias inmediatamente.","timer":null}
-      ]},
-    "electrica_quimica": { "nombre":"Quemadura electrica o quimica",
-      "pasos":[
-        {"n":1,"texto":"Electrica: NO toques a la persona si aun esta en contacto. Corta la corriente.","timer":null},
-        {"n":2,"texto":"Quimica: retira ropa con guantes. Enjuaga con agua 20 minutos.","timer":1200},
-        {"n":3,"texto":"Llama al 911. Este tipo requiere atencion medica urgente.","timer":null}
-      ]}
+  {
+    "id": "quemaduras",
+    "titulo": "Quemaduras",
+    "urgencia": "alto",
+    "llamar_911": false,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿Cómo ocurrió la quemadura?",
+        "opciones": [
+          {
+            "respuesta": "Fuego, líquido caliente, vapor u objeto caliente",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "Electricidad o producto químico",
+            "siguiente": "electrica_quimica"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿La quemadura es grande o está en cara, manos, pies o genitales?",
+        "opciones": [
+          {
+            "respuesta": "No, es pequeña (menor al tamaño de la palma)",
+            "siguiente": "p3"
+          },
+          {
+            "respuesta": "Sí, es grande o está en zona sensible",
+            "siguiente": "cubrir_y_hospital"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "texto": "¿Cómo se ve la quemadura?",
+        "opciones": [
+          {
+            "respuesta": "Solo enrojecimiento, sin ampollas",
+            "siguiente": "agua_fria"
+          },
+          {
+            "respuesta": "Tiene ampollas, piel blanca o parece profunda",
+            "siguiente": "cubrir_y_hospital"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "agua_fria": {
+        "nombre": "Quemadura leve: enfriar con agua",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Enfría con agua fría (no helada) durante al menos 10 minutos.",
+            "timer": 600
+          },
+          {
+            "n": 2,
+            "texto": "No uses hielo, pasta dental, mantequilla ni cremas caseras.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Cubre suavemente con gasa estéril o tela limpia. No aprietes.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si el dolor persiste más de 2 horas o aparecen ampollas, visita un médico.",
+            "timer": null
+          }
+        ]
+      },
+      "cubrir_y_hospital": {
+        "nombre": "Quemadura grave: cubrir y buscar atención",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 si la quemadura es muy extensa.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "No retires ropa pegada a la piel. No revientes ampollas.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Cubre con gasa estéril húmeda o tela limpia muy suavemente.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Mantén a la persona abrigada para evitar shock.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Lleva a la persona a urgencias inmediatamente.",
+            "timer": null
+          }
+        ]
+      },
+      "electrica_quimica": {
+        "nombre": "Quemadura eléctrica o química",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Eléctrica: NO toques a la persona si aún está en contacto. Corta la corriente primero.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Química: retira ropa contaminada con guantes. Enjuaga con agua 20 minutos.",
+            "timer": 1200
+          },
+          {
+            "n": 3,
+            "texto": "Llama al 911 en ambos casos. Requiere atención médica urgente.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "fuente": "Cruz Roja Internacional, Primeros Auxilios 2023"
   },
-  "fuente": "Cruz Roja Internacional 2023"
-}
+  {
+    "id": "desmayo",
+    "titulo": "Desmayo",
+    "urgencia": "alto",
+    "llamar_911": false,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿La persona ha recuperado la consciencia?",
+        "opciones": [
+          {
+            "respuesta": "Sí, ya está despierta y responde",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "No, sigue inconsciente",
+            "siguiente": "posicion_lateral_desmayo"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿Se golpeó la cabeza al caer?",
+        "opciones": [
+          {
+            "respuesta": "No, no hubo golpe",
+            "siguiente": "reposo"
+          },
+          {
+            "respuesta": "Sí, se golpeó la cabeza",
+            "siguiente": "evaluar_golpe"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "posicion_lateral_desmayo": {
+        "nombre": "Inconsciente: posición lateral de seguridad",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 si no recupera la consciencia en menos de 1 minuto.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Colócala de lado para evitar que se ahogue si vomita.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Inclina la cabeza ligeramente hacia atrás para mantener la vía aérea abierta.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Aflojar ropa ajustada en cuello y cintura.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Monitorea la respiración hasta que llegue ayuda.",
+            "timer": null
+          }
+        ]
+      },
+      "reposo": {
+        "nombre": "Desmayo recuperado: reposo y observación",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Que la persona permanezca acostada 10 minutos antes de intentar levantarse.",
+            "timer": 600
+          },
+          {
+            "n": 2,
+            "texto": "Afloja ropa apretada en cuello, pecho y cintura.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si está en un lugar con calor, llévala a un lugar fresco con buena ventilación.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Ofrece agua o un poco de azúcar si está completamente consciente y puede tragar.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Si el desmayo se repite o hay dolor en el pecho, busca atención médica.",
+            "timer": null
+          }
+        ]
+      },
+      "evaluar_golpe": {
+        "nombre": "Golpe en la cabeza tras el desmayo",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "No muevas a la persona si sospechas de lesión en el cuello o columna.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Busca signos de alarma: vómito, confusión, pupilas desiguales, sangrado.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si hay algún signo de alarma, llama al 911 de inmediato.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Aunque no haya signos de alarma, lleva a la persona a urgencias para evaluación.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "fuente": "Cruz Roja Internacional, Primeros Auxilios 2023"
+  },
+  {
+    "id": "hemorragia",
+    "titulo": "Hemorragia",
+    "urgencia": "critico",
+    "llamar_911": true,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿La herida está en la cabeza, cuello o pecho?",
+        "opciones": [
+          {
+            "respuesta": "No, está en brazo, pierna u otra zona del cuerpo",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "Sí, está en cabeza, cuello o pecho",
+            "siguiente": "hospital_urgente"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿El sangrado sigue siendo abundante tras 5 minutos de presión?",
+        "opciones": [
+          {
+            "respuesta": "No, el sangrado ha disminuido",
+            "siguiente": "presion_directa"
+          },
+          {
+            "respuesta": "Sí, no para o empapa la tela rápidamente",
+            "siguiente": "torniquete"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "presion_directa": {
+        "nombre": "Control de sangrado con presión directa",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Usa tela limpia o gasa y presiona firmemente sobre la herida sin soltar.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Mantén la presión constante durante al menos 10 minutos sin retirar la tela.",
+            "timer": 600
+          },
+          {
+            "n": 3,
+            "texto": "Si la tela se empapa, agrega más tela encima sin retirar la primera.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Eleva la zona lesionada por encima del nivel del corazón si es posible.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Acude a urgencias para revisar y suturar la herida si es necesario.",
+            "timer": null
+          }
+        ]
+      },
+      "torniquete": {
+        "nombre": "Sangrado grave: torniquete improvisado",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 inmediatamente.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Aplica presión directa con la mayor fuerza posible mientras preparas el torniquete.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Usa una tela ancha (no cordón ni alambre) y átala a 5 cm por encima de la herida.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Aprieta hasta que el sangrado se detenga. Anota la hora de aplicación.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "No retires el torniquete. Solo personal médico debe hacerlo.",
+            "timer": null
+          }
+        ]
+      },
+      "hospital_urgente": {
+        "nombre": "Herida en zona crítica: no manipular",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 inmediatamente.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "NO retires ningún objeto incrustado. Estabilízalo con telas a los lados sin presionar.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Cubre la herida con tela limpia sin aplicar presión directa en cuello o pecho.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Mantén a la persona quieta y abrigada. Habla con ella para mantenerla consciente.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "fuente": "Cruz Roja Internacional, Primeros Auxilios 2023"
+  },
+  {
+    "id": "convulsiones",
+    "titulo": "Convulsiones",
+    "urgencia": "alto",
+    "llamar_911": false,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿La convulsión lleva más de 5 minutos sin detenerse?",
+        "opciones": [
+          {
+            "respuesta": "Sí, lleva más de 5 minutos",
+            "siguiente": "convulsion_prolongada"
+          },
+          {
+            "respuesta": "No, duró menos de 5 minutos o ya terminó",
+            "siguiente": "p2"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿Es la primera vez que le ocurre o no tiene diagnóstico de epilepsia?",
+        "opciones": [
+          {
+            "respuesta": "Primera vez o sin diagnóstico previo",
+            "siguiente": "post_primera_vez"
+          },
+          {
+            "respuesta": "Tiene epilepsia con diagnóstico conocido",
+            "siguiente": "post_epilepsia"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "post_epilepsia": {
+        "nombre": "Después de una convulsión (con diagnóstico previo)",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Protege a la persona de golpes: retira objetos cercanos y pon algo suave bajo su cabeza.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "NO sujetes a la persona, NO metas nada en su boca, NO des agua ni medicamentos.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Cuando termine, colócala de lado para evitar que se ahogue.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Habla con calma y quédate a su lado hasta que esté completamente consciente.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Si se repite la convulsión o no recupera la consciencia, llama al 911.",
+            "timer": null
+          }
+        ]
+      },
+      "post_primera_vez": {
+        "nombre": "Primera convulsión: evaluar y buscar atención",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Protege a la persona de golpes y ponla de lado cuando termine la convulsión.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "NO sujetes a la persona durante la convulsión.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Anota cuánto tiempo duró y cómo fue (sacudidas, rigidez, pérdida de consciencia).",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Lleva a la persona a urgencias aunque parezca recuperada. La primera convulsión siempre requiere evaluación médica.",
+            "timer": null
+          }
+        ]
+      },
+      "convulsion_prolongada": {
+        "nombre": "Convulsión prolongada: emergencia médica",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 inmediatamente. Una convulsión de más de 5 minutos es una emergencia.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Protege a la persona de golpes mientras llega la ayuda.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "NO sujetes a la persona, NO metas nada en su boca.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Quédate a su lado y mantén libre su espacio hasta que llegue el servicio de emergencias.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "fuente": "Cruz Roja Internacional, Primeros Auxilios 2023"
+  },
+  {
+    "id": "fractura",
+    "titulo": "Fractura",
+    "urgencia": "medio",
+    "llamar_911": false,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿La fractura podría ser en cuello, espalda o cabeza?",
+        "opciones": [
+          {
+            "respuesta": "No, es en brazo, pierna, costilla u otro hueso",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "Sí, o la persona no puede mover bien el cuello o espalda",
+            "siguiente": "fractura_columna"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿Hay hueso visible o la extremidad está muy deformada?",
+        "opciones": [
+          {
+            "respuesta": "No, solo hay dolor, inflamación o moretón",
+            "siguiente": "fractura_cerrada"
+          },
+          {
+            "respuesta": "Sí, hay hueso visible o deformidad grave",
+            "siguiente": "fractura_abierta"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "fractura_cerrada": {
+        "nombre": "Fractura cerrada: inmovilizar y trasladar",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "No intentes acomodar el hueso ni la articulación.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Inmoviliza la zona con una tablilla improvisada (tabla, revistas) y vendaje, sin apretar.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Aplica hielo envuelto en tela durante 20 minutos para reducir la inflamación.",
+            "timer": 1200
+          },
+          {
+            "n": 4,
+            "texto": "Lleva a la persona a urgencias para confirmar la fractura con rayos X.",
+            "timer": null
+          }
+        ]
+      },
+      "fractura_abierta": {
+        "nombre": "Fractura abierta: cubrir y llamar al 911",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 o traslada de urgencia a un hospital.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "NO intentes limpiar la herida ni reintroducir el hueso.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Cubre la herida con tela estéril limpia y húmeda sin presionar el hueso.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Inmoviliza la extremidad en la posición en que está. No la muevas.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Controla el sangrado aplicando presión en los bordes de la herida, no sobre el hueso.",
+            "timer": null
+          }
+        ]
+      },
+      "fractura_columna": {
+        "nombre": "Posible fractura de columna: no mover",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 inmediatamente.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "NO muevas a la persona bajo ningún concepto. Una mala maniobra puede causar parálisis.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Habla con la persona para mantenerla calmada y quieta hasta que llegue la ayuda.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si debe moverse por peligro inminente, hazlo con ayuda de varias personas manteniendo cabeza, cuello y espalda alineados.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "fuente": "Cruz Roja Internacional, Primeros Auxilios 2023"
+  },
+  {
+    "id": "golpe-de-calor",
+    "titulo": "Golpe de calor",
+    "urgencia": "critico",
+    "llamar_911": true,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿La piel está muy caliente pero seca, sin sudor?",
+        "opciones": [
+          {
+            "respuesta": "Sí, piel seca, muy caliente y la persona está confundida",
+            "siguiente": "golpe_calor_grave"
+          },
+          {
+            "respuesta": "No, suda abundantemente y está mareada o débil",
+            "siguiente": "agotamiento_calor"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "golpe_calor_grave": {
+        "nombre": "Golpe de calor grave: enfriar urgente",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911. El golpe de calor grave puede ser fatal sin atención médica.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Mueve a la persona a un lugar fresco o con aire acondicionado de inmediato.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Rocía o aplica agua fría en todo el cuerpo, especialmente en cuello, axilas e ingles.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Abánica a la persona para acelerar el enfriamiento mientras espera la ambulancia.",
+            "timer": 300
+          },
+          {
+            "n": 5,
+            "texto": "Si está consciente y puede tragar, da agua fría a pequeños sorbos.",
+            "timer": null
+          }
+        ]
+      },
+      "agotamiento_calor": {
+        "nombre": "Agotamiento por calor: reposo y rehidratación",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Lleva a la persona a un lugar fresco, a la sombra o con aire acondicionado.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Afloja la ropa y aplica paños húmedos fríos en frente, cuello y muñecas.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Da agua fría o bebida isotónica a pequeños sorbos si está consciente.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si no mejora en 30 minutos, vomita o se desorienta, llama al 911.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "fuente": "Organización Mundial de la Salud, Guía de calor extremo 2023"
+  },
+  {
+    "id": "intoxicacion",
+    "titulo": "Intoxicación",
+    "urgencia": "alto",
+    "llamar_911": true,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿Cómo ocurrió la intoxicación?",
+        "opciones": [
+          {
+            "respuesta": "Ingirió algo (comió, bebió o tomó algo)",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "Inhaló un gas, vapor o sustancia",
+            "siguiente": "intox_inhalacion"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿La persona está consciente y puede tragar?",
+        "opciones": [
+          {
+            "respuesta": "Sí, está despierta y responde",
+            "siguiente": "intox_oral_consciente"
+          },
+          {
+            "respuesta": "No, está somnoliente, confundida o inconsciente",
+            "siguiente": "intox_inconsciente"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "intox_oral_consciente": {
+        "nombre": "Ingestión de sustancia: persona consciente",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Identifica qué ingirió, cuánto y hace cuánto tiempo. Guarda el envase si lo hay.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "NO induzcas el vómito a menos que el médico o el centro toxicológico lo indique.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Llama al centro toxicológico o al 911 e informa exactamente qué sustancia ingirió.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Sigue las instrucciones del operador. No des nada de comer ni beber sin autorización médica.",
+            "timer": null
+          }
+        ]
+      },
+      "intox_inconsciente": {
+        "nombre": "Intoxicación con persona inconsciente",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 inmediatamente.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Coloca a la persona de lado para evitar que se ahogue si vomita.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "NO des nada por la boca. NO induzcas el vómito.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Guarda el envase o muestra de la sustancia para mostrársela al personal médico.",
+            "timer": null
+          }
+        ]
+      },
+      "intox_inhalacion": {
+        "nombre": "Inhalación de gas o sustancia tóxica",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Saca a la persona del área contaminada al aire fresco de inmediato.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "NO entres al área contaminada sin protección. Llama al 911 desde afuera.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Afloja la ropa y coloca a la persona semisentada si está consciente.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si deja de respirar, inicia RCP si estás capacitado. Espera al servicio de emergencias.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "fuente": "Cruz Roja Internacional, Primeros Auxilios 2023"
+  },
+  {
+    "id": "reaccion-alergica",
+    "titulo": "Reacción alérgica",
+    "urgencia": "critico",
+    "llamar_911": true,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿Tiene dificultad para respirar, cara o garganta hinchada?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene alguno de esos síntomas",
+            "siguiente": "anafilaxia"
+          },
+          {
+            "respuesta": "No, solo urticaria, picazón o enrojecimiento en la piel",
+            "siguiente": "reaccion_leve"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "anafilaxia": {
+        "nombre": "Anafilaxia: emergencia grave",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 inmediatamente. La anafilaxia puede ser mortal en minutos.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Si la persona tiene epinefrina autoinyectable (EpiPen), ayúdala a aplicarla en el muslo externo.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Acuesta a la persona con las piernas elevadas, a menos que tenga dificultad para respirar (en ese caso, siéntala).",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si la persona deja de respirar, inicia RCP.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Mantente con ella hasta que llegue la ambulancia. No le des nada por la boca.",
+            "timer": null
+          }
+        ]
+      },
+      "reaccion_leve": {
+        "nombre": "Reacción alérgica leve",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Aleja a la persona del alérgeno (planta, animal, alimento, insecto).",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Si tiene antihistamínico de venta libre y no es alérgico a él, puede tomarlo según la dosis indicada.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Aplica compresas frías en las zonas con picazón para aliviar el malestar.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Vigila si aparece dificultad para respirar, hinchazón de cara o mareo. Si ocurre, llama al 911.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "fuente": "Cruz Roja Internacional, Primeros Auxilios 2023"
+  }
 ]
