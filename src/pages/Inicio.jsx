@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { categorias } from '../data/categorias'
 import emergencias from '../data/emergencias.json'
 import CardEmergencia from '../components/CardEmergencia'
@@ -5,6 +6,8 @@ import CardEmergencia from '../components/CardEmergencia'
 const idsDisponibles = new Set(emergencias.map(e => e.id))
 
 export default function Inicio() {
+  const navigate = useNavigate()
+
   return (
     <div className="min-h-screen bg-gray-50">
 
@@ -34,16 +37,21 @@ export default function Inicio() {
           ))}
         </div>
 
-        <footer className="mt-8 text-center space-y-1">
+        <footer className="mt-8 text-center space-y-2">
           <p className="text-xs text-gray-400">
             Protocolos basados en Cruz Roja Internacional y OMS
           </p>
           <p className="text-xs text-red-500 font-semibold">
             Ante una emergencia grave llama al 911
           </p>
+          <button
+            onClick={() => navigate('/glosario')}
+            className="text-xs text-gray-400 underline hover:text-gray-600 transition-colors"
+          >
+            Glosario y fuentes bibliográficas
+          </button>
         </footer>
       </main>
-
     </div>
   )
 }
