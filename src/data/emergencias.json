@@ -1095,5 +1095,1283 @@
       }
     },
     "fuente": "Cruz Roja Internacional, Primeros Auxilios 2023"
+  },
+  {
+    "id": "glucosa-baja",
+    "titulo": "Glucosa baja (Hipoglucemia)",
+    "urgencia": "critico",
+    "llamar_911": false,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿Tienes acceso a un glucómetro ahora mismo?",
+        "opciones": [
+          {
+            "respuesta": "Sí, puedo medir la glucosa",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "No, no tengo glucómetro",
+            "siguiente": "p3"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿Cuál es el resultado de la medición?",
+        "opciones": [
+          {
+            "respuesta": "Menos de 70 mg/dL (glucosa baja confirmada)",
+            "siguiente": "p4"
+          },
+          {
+            "respuesta": "Entre 70 y 100 mg/dL (normal en ayunas)",
+            "siguiente": "glucosa_normal"
+          },
+          {
+            "respuesta": "Más de 100 mg/dL",
+            "siguiente": "no_es_hipoglucemia"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "texto": "¿La persona presenta varios de estos síntomas al mismo tiempo: temblor, sudoración fría, palidez, hambre repentina, mareo, confusión o irritabilidad?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene varios de esos síntomas",
+            "siguiente": "p4"
+          },
+          {
+            "respuesta": "Solo uno o ninguno de esos síntomas",
+            "siguiente": "evaluar_otro"
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "texto": "¿La persona está consciente y puede tragar sin dificultad?",
+        "opciones": [
+          {
+            "respuesta": "Sí, está despierta y puede tragar",
+            "siguiente": "hipo_consciente"
+          },
+          {
+            "respuesta": "No, está muy confundida, inconsciente o con convulsiones",
+            "siguiente": "hipo_grave"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "hipo_consciente": {
+        "nombre": "Hipoglucemia leve: elevar glucosa",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Da 15 g de azúcar de acción rápida: 3 sobres de azúcar, 150 ml de jugo de fruta natural, 150 ml de refresco regular (no diet) o 4 tabletas de glucosa.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Espera 15 minutos sin que la persona haga esfuerzo físico.",
+            "timer": 900
+          },
+          {
+            "n": 3,
+            "texto": "Si tiene glucómetro, mide de nuevo. Si sigue bajo de 70 mg/dL, repite el paso 1.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Cuando mejore, ofrece un alimento con carbohidratos complejos: galletas, pan o una fruta.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Si no mejora tras 2 rondas de azúcar o empeora, llama al 911.",
+            "timer": null
+          }
+        ]
+      },
+      "hipo_grave": {
+        "nombre": "Hipoglucemia grave: llamar al 911",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 inmediatamente. La hipoglucemia grave sin tratamiento puede causar daño cerebral.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "NO des nada por la boca. Una persona inconsciente o muy confundida puede ahogarse.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Coloca a la persona de lado (posición lateral de seguridad) si está inconsciente.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si la persona tiene glucagón de emergencia prescrito y sabes usarlo, adminístralo según las instrucciones del kit.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Monitorea la respiración hasta que llegue la ambulancia.",
+            "timer": null
+          }
+        ]
+      },
+      "glucosa_normal": {
+        "nombre": "Glucosa normal: evaluar otra causa",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "La glucosa está en rango normal. Los síntomas pueden tener otra causa.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Evalúa si hay otros síntomas: dolor de cabeza intenso, presión en el pecho, dificultad para respirar.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si los síntomas persisten o son intensos, busca atención médica.",
+            "timer": null
+          }
+        ]
+      },
+      "no_es_hipoglucemia": {
+        "nombre": "Glucosa elevada: posible hiperglucemia",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "La medición indica glucosa alta, no baja. Consulta el protocolo de glucosa alta.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "No administres azúcar ni jugos. Eso empeoraría la situación.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si la persona tiene síntomas graves (confusión, respiración acelerada), llama al 911.",
+            "timer": null
+          }
+        ]
+      },
+      "evaluar_otro": {
+        "nombre": "Síntomas inespecíficos: observar",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Con un síntoma aislado es difícil confirmar hipoglucemia sin medición.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Si la persona es diabética y lleva más de 4 horas sin comer, puede ofrecerse un snack ligero con carbohidratos.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Mide la glucosa si consigues un glucómetro. Si los síntomas empeoran, busca atención médica.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "señales_sin_aparato": [
+      "Temblor de manos involuntario",
+      "Sudoración fría y pegajosa sin calor ambiental",
+      "Palidez repentina",
+      "Hambre urgente e intensa de golpe",
+      "Mareo o sensación de desmayo",
+      "Irritabilidad o cambios de humor sin razón",
+      "Visión borrosa o doble",
+      "Confusión o dificultad para hablar"
+    ],
+    "fuente": "American Diabetes Association, Estándares de atención 2023"
+  },
+  {
+    "id": "glucosa-alta",
+    "titulo": "Glucosa alta (Hiperglucemia)",
+    "urgencia": "alto",
+    "llamar_911": false,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿Tienes acceso a un glucómetro ahora mismo?",
+        "opciones": [
+          {
+            "respuesta": "Sí, puedo medir la glucosa",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "No, no tengo glucómetro",
+            "siguiente": "p3"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿Cuál es el resultado de la medición?",
+        "opciones": [
+          {
+            "respuesta": "Entre 180 y 300 mg/dL",
+            "siguiente": "p4"
+          },
+          {
+            "respuesta": "Más de 300 mg/dL o 'HI' en el glucómetro",
+            "siguiente": "hiper_grave"
+          },
+          {
+            "respuesta": "Menos de 180 mg/dL",
+            "siguiente": "hiper_leve"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "texto": "¿La persona presenta varios de estos síntomas: sed intensa, orinar muy seguido, visión borrosa, cansancio extremo, aliento con olor a frutas o acetona?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene varios de esos síntomas",
+            "siguiente": "p4"
+          },
+          {
+            "respuesta": "Solo uno o ninguno de esos síntomas",
+            "siguiente": "monitorear"
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "texto": "¿Tiene además: respiración rápida y profunda, confusión, náuseas o vómito, o dolor abdominal intenso?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene alguno de esos síntomas adicionales",
+            "siguiente": "hiper_grave"
+          },
+          {
+            "respuesta": "No, solo los síntomas básicos de sed y orinar mucho",
+            "siguiente": "hiper_moderado"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "hiper_moderado": {
+        "nombre": "Hiperglucemia moderada: hidratación y contacto médico",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Da agua pura a sorbos frecuentes. La hidratación ayuda a los riñones a eliminar el exceso de glucosa.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "NO des jugos, refrescos ni alimentos dulces. Agravan la situación.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si la persona es diabética con insulina prescrita, contacta a su médico o sigue su plan de corrección.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Evita actividad física intensa. El ejercicio puede empeorar la hiperglucemia si hay cetosis.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Mide la glucosa cada hora. Si sube o no baja, acude a urgencias.",
+            "timer": null
+          }
+        ]
+      },
+      "hiper_grave": {
+        "nombre": "Crisis hiperglucémica: emergencia médica",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911. Una glucosa mayor a 300 mg/dL con síntomas puede indicar cetoacidosis diabética (CAD), una emergencia.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Mantén a la persona en reposo y consciente. Habla con ella para mantenerla orientada.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si vomita, colócala de lado para evitar que se ahogue.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "NO administres insulina sin indicación médica directa.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Informa al médico: cuánto mide la glucosa, hace cuánto inició, qué medicamentos toma.",
+            "timer": null
+          }
+        ]
+      },
+      "hiper_leve": {
+        "nombre": "Glucosa levemente elevada: monitorear",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Una glucosa de hasta 180 mg/dL postprandial (después de comer) puede ser normal en personas diabéticas.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Mantén hidratación con agua. Evita carbohidratos simples por el resto del día.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Mide nuevamente en 2 horas. Si sube, contacta al médico.",
+            "timer": null
+          }
+        ]
+      },
+      "monitorear": {
+        "nombre": "Síntomas leves: observación",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Con síntomas leves y sin glucómetro es difícil confirmar. Busca uno en una farmacia cercana.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Mantén hidratación con agua. Evita azúcares mientras tanto.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si aparecen síntomas graves (confusión, vómito, respiración rápida), ve a urgencias sin esperar.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "señales_sin_aparato": [
+      "Sed intensa que no se calma con agua",
+      "Ganas de orinar muy frecuentes",
+      "Visión borrosa o nublada",
+      "Cansancio extremo sin causa aparente",
+      "Aliento con olor dulce, a frutas o acetona",
+      "Heridas que cicatrizan muy lentamente",
+      "Náuseas o dolor de estómago",
+      "Respiración rápida y profunda (señal de alarma grave)"
+    ],
+    "fuente": "American Diabetes Association, Estándares de atención 2023"
+  },
+  {
+    "id": "presion-alta",
+    "titulo": "Presión alta (Hipertensión)",
+    "urgencia": "alto",
+    "llamar_911": false,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿Tienes acceso a un tensiómetro (baumanómetro) ahora mismo?",
+        "opciones": [
+          {
+            "respuesta": "Sí, puedo tomar la presión",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "No, no tengo tensiómetro",
+            "siguiente": "p3"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿Cuál es la lectura del tensiómetro?",
+        "opciones": [
+          {
+            "respuesta": "Sistólica ≥ 180 o diastólica ≥ 120 (ej: 185/110)",
+            "siguiente": "p4"
+          },
+          {
+            "respuesta": "Sistólica entre 140–179 o diastólica entre 90–119",
+            "siguiente": "hta_moderada"
+          },
+          {
+            "respuesta": "Menos de 140/90",
+            "siguiente": "hta_normal"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "texto": "¿La persona presenta varios de estos síntomas: dolor de cabeza intenso en la nuca, visión borrosa o con destellos, zumbido en los oídos, mareo intenso o náuseas?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene varios de esos síntomas",
+            "siguiente": "p4"
+          },
+          {
+            "respuesta": "Solo uno o ninguno de esos síntomas",
+            "siguiente": "hta_vigilar"
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "texto": "¿Tiene además: dolor de pecho, dificultad para respirar, confusión, pérdida de visión o dificultad para hablar?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene alguno de esos síntomas adicionales",
+            "siguiente": "crisis_hta"
+          },
+          {
+            "respuesta": "No, solo el dolor de cabeza y mareo",
+            "siguiente": "urgencia_hta"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "crisis_hta": {
+        "nombre": "Crisis hipertensiva con daño a órgano: emergencia",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 inmediatamente. Dolor de pecho + presión muy alta puede indicar infarto o ACV.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Sienta a la persona en posición cómoda, levemente reclinada. No la acuestes completamente.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "NO le des ningún medicamento sin indicación médica, incluso si tiene antihipertensivos.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Mantén el ambiente tranquilo. Evita el estrés y el ruido.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Monitorea la respiración y el estado de consciencia hasta que llegue ayuda.",
+            "timer": null
+          }
+        ]
+      },
+      "urgencia_hta": {
+        "nombre": "Urgencia hipertensiva: reposo y medicación",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Indica a la persona que se siente o recueste en un lugar tranquilo y silencioso.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Si tiene medicamento antihipertensivo prescrito, que lo tome según su pauta habitual.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Espera 30 minutos en reposo absoluto y vuelve a medir la presión.",
+            "timer": 1800
+          },
+          {
+            "n": 4,
+            "texto": "Evita esfuerzos, café, alcohol y cigarrillo.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Si no baja o empeoran los síntomas, acude a urgencias.",
+            "timer": null
+          }
+        ]
+      },
+      "hta_moderada": {
+        "nombre": "Presión elevada moderada: reposo",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Pide a la persona que repose 5 minutos sentada antes de volver a medir.",
+            "timer": 300
+          },
+          {
+            "n": 2,
+            "texto": "Si la segunda medición sigue elevada y tiene síntomas, sigue el protocolo de urgencia hipertensiva.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si no tiene síntomas, puede ser estrés o esfuerzo reciente. Reposo y monitoreo.",
+            "timer": null
+          }
+        ]
+      },
+      "hta_normal": {
+        "nombre": "Presión en rango aceptable",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "La lectura está dentro de rangos normales o de hipertensión leve.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Los síntomas pueden tener otra causa. Mantén reposo y evalúa si mejoran.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si los síntomas persisten o empeoran, busca atención médica.",
+            "timer": null
+          }
+        ]
+      },
+      "hta_vigilar": {
+        "nombre": "Sin tensiómetro: síntomas leves, observar",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Busca un tensiómetro en farmacia, consultorio cercano o con un vecino.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Mientras tanto, pide a la persona que repose en silencio.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si aparecen síntomas más intensos (visión borrosa, dolor de pecho), ve a urgencias sin esperar.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "señales_sin_aparato": [
+      "Dolor de cabeza intenso, especialmente en la nuca",
+      "Visión borrosa, con destellos o 'moscas'",
+      "Zumbido persistente en los oídos",
+      "Mareo intenso sin haber cambiado de posición",
+      "Náuseas sin causa digestiva aparente",
+      "Sensación de presión o pulsaciones en la cabeza",
+      "Enrojecimiento del rostro y cuello",
+      "Dolor de pecho o dificultad para respirar (señal de alarma grave)"
+    ],
+    "fuente": "Sociedad Europea de Hipertensión, Guías 2023 / OMS"
+  },
+  {
+    "id": "presion-baja",
+    "titulo": "Presión baja (Hipotensión)",
+    "urgencia": "medio",
+    "llamar_911": false,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿Tienes acceso a un tensiómetro ahora mismo?",
+        "opciones": [
+          {
+            "respuesta": "Sí, puedo medir la presión",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "No, no tengo tensiómetro",
+            "siguiente": "p3"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿Cuál es la lectura del tensiómetro?",
+        "opciones": [
+          {
+            "respuesta": "Sistólica menor de 90 o diastólica menor de 60 (ej: 85/55)",
+            "siguiente": "p4"
+          },
+          {
+            "respuesta": "La lectura está dentro de lo normal para esta persona",
+            "siguiente": "hipo_normal"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "texto": "¿La persona presenta: mareo al levantarse, visión oscura o borrosa al cambiar de posición, sudoración fría, pulso débil o sensación de desmayo inminente?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene varios de esos síntomas",
+            "siguiente": "p4"
+          },
+          {
+            "respuesta": "Solo uno o ninguno de esos síntomas",
+            "siguiente": "hipo_leve"
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "texto": "¿La persona está consciente y puede responder preguntas con claridad?",
+        "opciones": [
+          {
+            "respuesta": "Sí, está consciente aunque débil",
+            "siguiente": "hipo_consciente"
+          },
+          {
+            "respuesta": "No, está desorientada, muy confundida o ha perdido la consciencia",
+            "siguiente": "hipo_grave"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "hipo_consciente": {
+        "nombre": "Hipotensión moderada: elevar piernas",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Acuesta a la persona boca arriba y eleva sus piernas 30 cm por encima del nivel del corazón.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Mantén esa posición durante 10 minutos.",
+            "timer": 600
+          },
+          {
+            "n": 3,
+            "texto": "Ofrece agua con una pizca de sal o bebida isotónica si está completamente consciente.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Afloja ropa ajustada en cuello, pecho y cintura.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Cuando mejore, que se incorpore muy lentamente: primero sentarse, esperar 2 minutos, luego levantarse.",
+            "timer": null
+          },
+          {
+            "n": 6,
+            "texto": "Si no mejora en 10 minutos o vuelve a marear al levantarse, acude a urgencias.",
+            "timer": null
+          }
+        ]
+      },
+      "hipo_grave": {
+        "nombre": "Hipotensión grave o shock: emergencia",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911. Una presión muy baja con confusión puede ser shock, una emergencia.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Acuesta a la persona con piernas elevadas. NO la sientes ni la pongas de pie.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Cúbrela con una manta para evitar hipotermia.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "NO des ningún medicamento sin indicación médica.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Monitorea la respiración y el estado de consciencia hasta que llegue ayuda.",
+            "timer": null
+          }
+        ]
+      },
+      "hipo_leve": {
+        "nombre": "Síntomas leves: hidratación y reposo",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Pide a la persona que se siente o recueste unos minutos.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Ofrece agua. La deshidratación es la causa más común de presión baja leve.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Evita levantarse bruscamente. Siempre pasar de acostado a sentado primero.",
+            "timer": null
+          }
+        ]
+      },
+      "hipo_normal": {
+        "nombre": "Presión en rango normal para la persona",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "La lectura no indica hipotensión. Los síntomas pueden tener otra causa.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Evalúa hidratación y descanso reciente. A veces el cansancio o el calor causan síntomas similares.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si los síntomas persisten, busca atención médica.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "señales_sin_aparato": [
+      "Mareo o sensación de desmayo al levantarse",
+      "Visión que se oscurece o se nubla al cambiar de posición",
+      "Debilidad general repentina",
+      "Piel pálida, fría y húmeda",
+      "Pulso que se siente débil o rápido",
+      "Náuseas sin causa digestiva",
+      "Confusión o dificultad para concentrarse"
+    ],
+    "fuente": "Sociedad Europea de Cardiología, Guías de hipotensión 2022"
+  },
+  {
+    "id": "ictus",
+    "titulo": "Ictus / ACV",
+    "urgencia": "critico",
+    "llamar_911": true,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "Aplica la prueba FAST: ¿La persona presenta ALGUNO de estos signos?",
+        "opciones": [
+          {
+            "respuesta": "Sí: sonrisa torcida, brazo que cae, habla rara o los tres",
+            "siguiente": "ictus_confirmado"
+          },
+          {
+            "respuesta": "No tiene ninguno de esos tres signos",
+            "siguiente": "p2"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿Presenta de forma súbita alguno de estos síntomas: pérdida de visión en un ojo, dolor de cabeza explosivo 'el peor de su vida', pérdida de equilibrio o entumecimiento en un lado del cuerpo?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene alguno de esos síntomas de inicio brusco",
+            "siguiente": "ictus_confirmado"
+          },
+          {
+            "respuesta": "No, ninguno de esos síntomas",
+            "siguiente": "ictus_descartado"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "ictus_confirmado": {
+        "nombre": "FAST positivo: protocolo de ictus",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 AHORA. El ictus es una emergencia tiempo-dependiente. Cada minuto cuenta.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Anota la hora exacta en que aparecieron los primeros síntomas. El equipo médico lo necesita.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Mantén a la persona sentada o recostada en posición cómoda. NO la dejes caminar sola.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "NO le des agua, alimentos, aspirina ni ningún medicamento.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Si pierde la consciencia, colócala de lado y verifica que respire.",
+            "timer": null
+          },
+          {
+            "n": 6,
+            "texto": "Habla con calma con la persona. Dile que ya viene ayuda. No la dejes sola.",
+            "timer": null
+          }
+        ]
+      },
+      "ictus_descartado": {
+        "nombre": "Síntomas no compatibles con ictus",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Los síntomas actuales no cumplen criterios de ictus según la prueba FAST.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Sin embargo, si los síntomas son nuevos, intensos o empeoran, ve a urgencias.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si en cualquier momento aparece asimetría facial, debilidad en un brazo o habla incomprensible, llama al 911 inmediatamente.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "prueba_fast": {
+      "F": {
+        "letra": "F",
+        "palabra": "Face (Cara)",
+        "instruccion": "Pide que sonría. ¿Un lado de la cara cae o está torcido?"
+      },
+      "A": {
+        "letra": "A",
+        "palabra": "Arms (Brazos)",
+        "instruccion": "Pide que levante ambos brazos. ¿Uno cae o no puede levantarlo?"
+      },
+      "S": {
+        "letra": "S",
+        "palabra": "Speech (Habla)",
+        "instruccion": "Pide que repita una frase. ¿El habla es arrastrada, rara o incomprensible?"
+      },
+      "T": {
+        "letra": "T",
+        "palabra": "Time (Tiempo)",
+        "instruccion": "Si alguno es positivo, llama al 911 AHORA y anota la hora."
+      }
+    },
+    "fuente": "American Stroke Association, Guía de ictus 2023"
+  },
+  {
+    "id": "pre-infarto",
+    "titulo": "Signos de infarto",
+    "urgencia": "critico",
+    "llamar_911": true,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿La persona siente dolor o presión en el pecho?",
+        "opciones": [
+          {
+            "respuesta": "Sí, hay dolor, presión, opresión o peso en el pecho",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "No hay dolor de pecho, pero hay otros síntomas",
+            "siguiente": "p3"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿El dolor dura más de 5 minutos o va y viene?",
+        "opciones": [
+          {
+            "respuesta": "Sí, lleva más de 5 minutos o es intermitente",
+            "siguiente": "infarto_probable"
+          },
+          {
+            "respuesta": "Fue un dolor agudo breve que ya pasó completamente",
+            "siguiente": "p4"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "texto": "¿Tiene náuseas, sudoración fría, dificultad para respirar, dolor en brazo izquierdo, mandíbula o espalda sin golpe previo?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene uno o más de esos síntomas",
+            "siguiente": "infarto_probable"
+          },
+          {
+            "respuesta": "No, ninguno de esos síntomas",
+            "siguiente": "evaluar_otros"
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "texto": "¿La persona tiene antecedentes cardíacos (infarto previo, stent, angina)?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene antecedentes cardíacos",
+            "siguiente": "infarto_probable"
+          },
+          {
+            "respuesta": "No tiene antecedentes cardíacos conocidos",
+            "siguiente": "vigilar_dolor"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "infarto_probable": {
+        "nombre": "Posible infarto: protocolo de emergencia",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 INMEDIATAMENTE. No esperes a ver si mejora. El tiempo es músculo cardíaco.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Sienta a la persona en posición cómoda, levemente reclinada (posición semisentada). No la acuestes completamente.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Afloja ropa ajustada: corbata, cinturón, cuello de la camisa.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si la persona no es alérgica a la aspirina y está consciente, puede masticar (no tragar) 300 mg de aspirina.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Si tiene nitroglicerina prescrita por su médico, puede usarla según su pauta.",
+            "timer": null
+          },
+          {
+            "n": 6,
+            "texto": "Si la persona pierde la consciencia y deja de respirar, inicia RCP.",
+            "timer": null
+          }
+        ]
+      },
+      "vigilar_dolor": {
+        "nombre": "Dolor de pecho breve sin antecedentes: vigilar",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Aunque el dolor pasó, no lo ignores. Muchos infartos empiezan con dolores breves.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Pide a la persona que repose y evite esfuerzos por el resto del día.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si el dolor vuelve, dura más de 5 minutos o aparece con otros síntomas, llama al 911 sin dudar.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Busca evaluación médica hoy mismo aunque el dolor haya cedido.",
+            "timer": null
+          }
+        ]
+      },
+      "evaluar_otros": {
+        "nombre": "Síntomas leves: buscar evaluación",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Los síntomas actuales son inespecíficos, pero en el contexto cardiaco siempre es mejor evaluar.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Acude a urgencias si la persona tiene más de 45 años, tabaquismo, diabetes o presión alta.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si en cualquier momento aparece dolor de pecho o dificultad para respirar, llama al 911.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "sintomas_atipicos": [
+      "En mujeres el infarto puede presentarse sin dolor de pecho intenso",
+      "Fatiga extrema sin razón aparente puede ser el único síntoma",
+      "Náuseas o sensación de indigestión que no cede",
+      "Dolor en la mandíbula, cuello o espalda alta",
+      "Dificultad para respirar sin esfuerzo previo",
+      "Sudoración fría repentina sin fiebre ni calor"
+    ],
+    "fuente": "American Heart Association, Guía de infarto 2023"
+  },
+  {
+    "id": "dolor-cabeza",
+    "titulo": "Dolor de cabeza",
+    "urgencia": "medio",
+    "llamar_911": false,
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "¿Cómo empezó el dolor de cabeza?",
+        "opciones": [
+          {
+            "respuesta": "De golpe, fue instantáneo y muy intenso ('el peor de mi vida')",
+            "siguiente": "cabeza_emergencia"
+          },
+          {
+            "respuesta": "Gradualmente, en minutos u horas",
+            "siguiente": "p2"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿El dolor va acompañado de fiebre, rigidez en el cuello o erupción en la piel?",
+        "opciones": [
+          {
+            "respuesta": "Sí, tiene fiebre y rigidez de cuello",
+            "siguiente": "cabeza_meningitis"
+          },
+          {
+            "respuesta": "No, no hay fiebre ni rigidez",
+            "siguiente": "p3"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "texto": "¿Dónde se siente el dolor principalmente?",
+        "opciones": [
+          {
+            "respuesta": "En un solo lado de la cabeza, pulsante, con náuseas o sensibilidad a la luz",
+            "siguiente": "migrana"
+          },
+          {
+            "respuesta": "Como una banda o presión alrededor de toda la cabeza",
+            "siguiente": "cefalea_tension"
+          },
+          {
+            "respuesta": "Detrás del ojo o en la sien, muy intenso y en rachas",
+            "siguiente": "cefalea_cluster"
+          },
+          {
+            "respuesta": "En la nuca, con sensación de presión o tensión cervical",
+            "siguiente": "cefalea_cervicogenica"
+          }
+        ]
+      }
+    ],
+    "protocolos": {
+      "cabeza_emergencia": {
+        "nombre": "Cefalea en trueno: emergencia médica",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911 o ve a urgencias inmediatamente. Un dolor de cabeza explosivo repentino puede indicar hemorragia cerebral.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "NO tomes analgésicos y esperes. Este tipo de dolor requiere tomografía urgente.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Mantén a la persona en reposo, sin esfuerzos.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Informa al médico el momento exacto en que inició y cómo fue su inicio.",
+            "timer": null
+          }
+        ]
+      },
+      "cabeza_meningitis": {
+        "nombre": "Posible meningitis: emergencia infecciosa",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Llama al 911. Fiebre + dolor de cabeza intenso + rigidez de cuello es la tríada clásica de meningitis.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Mantén a la persona en reposo y en un ambiente tranquilo.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "NO intentes flexionar el cuello de la persona para 'probarlo'. Puede ser doloroso y no cambia la conducta.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si hay erupción en la piel que no desaparece al presionarla, es señal de alarma máxima.",
+            "timer": null
+          }
+        ]
+      },
+      "migrana": {
+        "nombre": "Migraña: tratamiento en casa",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Retírate a una habitación oscura y silenciosa. La luz y el ruido intensifican la migraña.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Aplica una compresa fría en la frente o la nuca.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si tienes tratamiento abortivo prescrito (triptanes), tómalo al inicio del dolor, no cuando ya está en su pico.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si no tienes tratamiento específico: ibuprofeno 400–600 mg o paracetamol 1 g con el estómago lleno.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Intenta dormir. El sueño es uno de los mejores aliados contra la migraña.",
+            "timer": null
+          },
+          {
+            "n": 6,
+            "texto": "Si dura más de 72 horas o es la peor migraña que has tenido, ve a urgencias.",
+            "timer": null
+          }
+        ]
+      },
+      "cefalea_tension": {
+        "nombre": "Cefalea tensional: alivio en casa",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Toma paracetamol 500–1000 mg o ibuprofeno 400 mg según las instrucciones del envase.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Realiza estiramientos suaves de cuello y hombros.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Aplica calor en la nuca (paño caliente, ducha de agua tibia).",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Descansa en un ambiente tranquilo. Reduce la pantalla del celular o computadora.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Si aparece más de 15 días al mes, consulta a un médico para descartar cefalea crónica.",
+            "timer": null
+          }
+        ]
+      },
+      "cefalea_cluster": {
+        "nombre": "Cefalea en racimos: dolor muy intenso",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Es uno de los dolores más intensos conocidos. No subestimes a quien lo padece.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "A diferencia de la migraña, la persona con cefalea en racimos NO puede quedarse quieta. Suele moverse o agitarse.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si tiene diagnóstico previo y tratamiento prescrito (sumatriptán, oxígeno), adminístralo al inicio del ataque.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si es el primer episodio o no tiene diagnóstico, ve a urgencias para evaluación.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Evita alcohol y tabaco durante las rachas: son desencadenantes conocidos.",
+            "timer": null
+          }
+        ]
+      },
+      "cefalea_cervicogenica": {
+        "nombre": "Cefalea cervicogénica: origen en el cuello",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "El dolor nace en el cuello o nuca y sube hacia la cabeza. Suele empeorar con movimientos del cuello.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Aplica calor húmedo en la nuca y cuello durante 20 minutos.",
+            "timer": 1200
+          },
+          {
+            "n": 3,
+            "texto": "Toma ibuprofeno 400 mg si no hay contraindicación.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Evita posturas que mantengan el cuello inclinado hacia adelante por mucho tiempo.",
+            "timer": null
+          },
+          {
+            "n": 5,
+            "texto": "Si el dolor es frecuente, busca evaluación con fisioterapia o neurología.",
+            "timer": null
+          }
+        ]
+      }
+    },
+    "guia_tipos": {
+      "migrana": "Unilateral, pulsante, náuseas, fotofobia. Dura 4–72h.",
+      "tension": "Bilateral, en banda, sin náuseas. Leve-moderada.",
+      "cluster": "Periorbitario, muy intenso, unilateral, en rachas. Lagrimeo y rinorrea.",
+      "cervicogenica": "Nuca + cuello, empeora con movimiento cervical.",
+      "alarma": "Inicio explosivo, con fiebre/rigidez, tras golpe: IR A URGENCIAS"
+    },
+    "fuente": "Sociedad Española de Neurología, Guía de cefaleas 2023"
   }
 ]
