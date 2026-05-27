@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
-import emergencias from '../data/emergencias.json'
+import { getEmergencia, logEvento } from '../lib/emergencias'
 import BotonSOS from '../components/BotonSOS'
 
 const headerColor = { critico:'bg-red-600', alto:'bg-orange-500', medio:'bg-yellow-500' }
@@ -8,18 +8,28 @@ const headerColor = { critico:'bg-red-600', alto:'bg-orange-500', medio:'bg-yell
 export default function Protocolo() {
   const { id, protocoloId } = useParams()
   const navigate = useNavigate()
-  const emergencia = emergencias.find(e => e.id === id)
-  const protocolo  = emergencia?.protocolos?.[protocoloId]
 
-  const [pasoActual,     setPasoActual]     = useState(0)
-  const [tiempoRestante, setTiempoRestante] = useState(null)
+  const [emergencia,    setEmergencia]    = useState(null)
+  const [cargando,      setCargando]      = useState(true)
+  const [error,         setError]         = useState(null)
+  const [pasoActual,    setPasoActual]    = useState(0)
+  const [tiempoRestante,setTiempoRestante]= useState(null)
   const intervaloRef = useRef(null)
 
-  const paso     = protocolo?.pasos?.[pasoActual]
-  const total    = protocolo?.pasos?.length || 0
-  const esUltimo = pasoActual === total - 1
-  const color    = headerColor[emergencia?.urgencia] || 'bg-red-600'
-  const esAyudante = protocolo?.pantalla_ayudante
+  useEffect(() => {
+    getEmergencia(id)
+      .then(data => { setEmergencia(data); logEvento(id, 'inicio_protocolo', protocoloId) })
+      .catch(err  => setError(err.message))
+      .finally(()  => setCargando(false))
+  }, [id])
+
+  const protocolo    = emergencia?.protocolos?.[protocoloId]
+  const paso         = protocolo?.pasos?.[pasoActual]
+  const total        = protocolo?.pasos?.length || 0
+  const esUltimo     = pasoActual === total - 1
+  const color        = headerColor[emergencia?.urgencia] || 'bg-red-600'
+  const esAyudante   = protocolo?.pantalla_ayudante
+  const esPrefijado  = paso?.texto?.startsWith('PARA QUIEN AYUDA:')
 
   useEffect(() => {
     clearInterval(intervaloRef.current)
@@ -33,13 +43,19 @@ export default function Protocolo() {
       }, 1000)
     } else { setTiempoRestante(null) }
     return () => clearInterval(intervaloRef.current)
-  }, [pasoActual])
+  }, [pasoActual, emergencia])
 
-  if (!emergencia || !protocolo) return (
+  if (cargando) return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="w-10 h-10 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
+    </div>
+  )
+
+  if (error || !emergencia || !protocolo) return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
       <div className="text-center space-y-4">
         <p className="text-4xl">🔍</p>
-        <p className="text-gray-600 font-medium">Protocolo no encontrado</p>
+        <p className="text-gray-600 font-medium">{error || 'Protocolo no encontrado'}</p>
         <button onClick={() => navigate('/')} className="text-red-600 underline text-sm">Volver al inicio</button>
       </div>
     </div>
@@ -50,28 +66,31 @@ export default function Protocolo() {
     return m > 0 ? `${m}:${String(s).padStart(2,'0')}` : `${s}s`
   }
 
+  function textoLimpio(texto) {
+    return (texto || '').replace(/^PARA QUIEN AYUDA:\s*/i, '')
+  }
+
   function irAnterior() {
     if (pasoActual > 0) setPasoActual(p => p - 1)
     else navigate(`/emergencia/${id}`)
   }
 
-  // Limpia el prefijo "PARA QUIEN AYUDA: " del texto
-  function textoLimpio(texto) {
-    return texto.replace(/^PARA QUIEN AYUDA:\s*/i, '')
+  function completar() {
+    logEvento(id, 'completar_protocolo', protocoloId)
+    navigate('/')
   }
-
-  const esParaAyudante = paso?.texto?.startsWith('PARA QUIEN AYUDA:')
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-
       <header className={`${esAyudante ? 'bg-red-700' : color} text-white px-4 pt-4 pb-5`}>
         <div className="max-w-lg mx-auto">
           <button onClick={irAnterior} className="flex items-center gap-1 text-white/80 text-sm mb-3 hover:text-white">
             Atrás
           </button>
           {esAyudante && (
-            <p className="text-white/80 text-xs font-medium uppercase tracking-widest mb-1">Instrucciones para quien ayuda</p>
+            <p className="text-white/80 text-xs font-medium uppercase tracking-widest mb-1">
+              Instrucciones para quien ayuda
+            </p>
           )}
           <h1 className="text-lg font-bold leading-tight">{protocolo.nombre}</h1>
           <p className="text-white/70 text-sm mt-1">Paso {pasoActual + 1} de {total}</p>
@@ -83,13 +102,12 @@ export default function Protocolo() {
       </header>
 
       <main className="flex-1 max-w-lg mx-auto w-full px-4 py-5 flex flex-col gap-4">
-
         <div className="flex items-center justify-between">
           <span className={`text-xs font-bold px-3 py-1 rounded-full text-white ${esAyudante ? 'bg-red-700' : color}`}>
             Paso {pasoActual + 1}
           </span>
           {tiempoRestante !== null && (
-            <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold ${
+            <div className={`px-3 py-1 rounded-full text-sm font-bold ${
               tiempoRestante > 0 ? 'bg-amber-100 text-amber-800' : 'bg-green-100 text-green-800'
             }`}>
               {tiempoRestante > 0 ? `Tiempo: ${formatTiempo(tiempoRestante)}` : '✓ Listo'}
@@ -98,9 +116,9 @@ export default function Protocolo() {
         </div>
 
         <div className={`rounded-2xl shadow-sm p-6 flex-1 flex items-center justify-center ${
-          esParaAyudante ? 'bg-red-50 border-2 border-red-200' : 'bg-white border border-gray-100'
+          esPrefijado ? 'bg-red-50 border-2 border-red-200' : 'bg-white border border-gray-100'
         }`}>
-          {esParaAyudante && (
+          {esPrefijado ? (
             <div className="w-full">
               <p className="text-xs font-bold text-red-600 uppercase tracking-widest mb-3 text-center">
                 Dile a quien está contigo:
@@ -109,15 +127,13 @@ export default function Protocolo() {
                 {textoLimpio(paso?.texto)}
               </p>
             </div>
-          )}
-          {!esParaAyudante && (
+          ) : (
             <p className="text-xl font-semibold text-gray-800 text-center leading-relaxed">
               {paso?.texto}
             </p>
           )}
         </div>
 
-        {/* Puntitos de progreso */}
         <div className="flex justify-center gap-2">
           {protocolo.pasos.map((_, i) => (
             <div key={i} className={`rounded-full transition-all duration-300 ${
@@ -130,24 +146,23 @@ export default function Protocolo() {
 
         <div className="grid grid-cols-3 gap-3">
           <button onClick={irAnterior}
-            className="col-span-1 py-4 rounded-xl border-2 border-gray-200 text-gray-600 font-semibold hover:bg-gray-50 transition-colors">
+            className="col-span-1 py-4 rounded-xl border-2 border-gray-200 text-gray-600 font-semibold hover:bg-gray-50">
             Anterior
           </button>
           {!esUltimo ? (
             <button onClick={() => setPasoActual(p => p+1)}
-              className={`col-span-2 py-4 rounded-xl text-white font-bold text-lg ${esAyudante ? 'bg-red-700 hover:bg-red-800' : color} hover:opacity-90 transition-opacity`}>
+              className={`col-span-2 py-4 rounded-xl text-white font-bold text-lg ${esAyudante ? 'bg-red-700' : color} hover:opacity-90`}>
               Siguiente
             </button>
           ) : (
-            <button onClick={() => navigate('/')}
-              className="col-span-2 py-4 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-lg transition-colors">
+            <button onClick={completar}
+              className="col-span-2 py-4 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-lg">
               Completado ✓
             </button>
           )}
         </div>
 
         <p className="text-xs text-gray-400 text-center">Fuente: {emergencia.fuente}</p>
-
         <BotonSOS emergenciaId={id} />
       </main>
     </div>
