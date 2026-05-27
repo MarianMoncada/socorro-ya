@@ -8,10 +8,10 @@ const tipoColor     = { 'autoatendible':'bg-green-100 text-green-800', 'necesita
 const tipoLabel     = { 'autoatendible':'Tú puedes', 'necesita-ayuda':'Con ayuda', 'solo-911':'Solo 911' }
 
 export default function AdminDashboard() {
-  const navigate        = useNavigate()
+  const navigate          = useNavigate()
   const { admin, logout } = useAdmin()
   const [emergencias, setEmergencias] = useState([])
-  const [stats,       setStats]       = useState({ total:0, consultas:0, completados:0 })
+  const [stats,       setStats]       = useState({ total:0, consultas:0, completados:0, notifs:0 })
   const [cargando,    setCargando]    = useState(true)
   const [filtro,      setFiltro]      = useState('todas')
   const [busqueda,    setBusqueda]    = useState('')
@@ -21,13 +21,14 @@ export default function AdminDashboard() {
   async function cargarDatos() {
     setCargando(true)
     try {
-      const [{ data: emgs }, { count: consultas }, { count: completados }] = await Promise.all([
+      const [{ data:emgs }, { count:consultas }, { count:completados }, { count:notifs }] = await Promise.all([
         supabase.from('emergencias').select('*').order('seccion').order('urgencia'),
         supabase.from('eventos_consulta').select('*', { count:'exact', head:true }),
         supabase.from('eventos_consulta').select('*', { count:'exact', head:true }).eq('tipo','completar_protocolo'),
+        supabase.from('notificaciones').select('*', { count:'exact', head:true }).eq('activa', true),
       ])
       setEmergencias(emgs || [])
-      setStats({ total: emgs?.length||0, consultas: consultas||0, completados: completados||0 })
+      setStats({ total:emgs?.length||0, consultas:consultas||0, completados:completados||0, notifs:notifs||0 })
     } finally { setCargando(false) }
   }
 
@@ -55,14 +56,21 @@ export default function AdminDashboard() {
           </div>
           <div className="flex items-center gap-2">
             <button onClick={() => navigate('/admin/estadisticas')}
-              className="text-xs px-3 py-1.5 rounded-lg border border-gray-700
-                         text-gray-400 hover:text-white hover:border-gray-500 transition-colors">
+              className="text-xs px-3 py-1.5 rounded-lg border border-gray-700 text-gray-400 hover:text-white hover:border-gray-500 transition-colors">
               📊 Estadísticas
+            </button>
+            <button onClick={() => navigate('/admin/notificaciones')}
+              className="relative text-xs px-3 py-1.5 rounded-lg border border-gray-700 text-gray-400 hover:text-white hover:border-gray-500 transition-colors">
+              🔔 Notificaciones
+              {stats.notifs > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-600 text-white text-xs rounded-full flex items-center justify-center font-bold">
+                  {stats.notifs}
+                </span>
+              )}
             </button>
             <p className="text-gray-400 text-xs hidden sm:block">{admin?.email}</p>
             <button onClick={handleLogout}
-              className="text-xs px-3 py-1.5 rounded-lg border border-gray-700
-                         text-gray-400 hover:text-white hover:border-gray-500 transition-colors">
+              className="text-xs px-3 py-1.5 rounded-lg border border-gray-700 text-gray-400 hover:text-white hover:border-gray-500 transition-colors">
               Cerrar sesión
             </button>
           </div>
@@ -70,12 +78,12 @@ export default function AdminDashboard() {
       </header>
 
       <main className="max-w-5xl mx-auto px-4 py-6 space-y-6">
-
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { label:'Emergencias',           value:stats.total,       icon:'🗂️' },
-            { label:'Consultas totales',     value:stats.consultas,   icon:'📊' },
-            { label:'Protocolos completados',value:stats.completados, icon:'✅' },
+            { label:'Emergencias',            value:stats.total,       icon:'🗂️' },
+            { label:'Consultas totales',      value:stats.consultas,   icon:'📊' },
+            { label:'Protocolos completados', value:stats.completados, icon:'✅' },
+            { label:'Notificaciones activas', value:stats.notifs,      icon:'🔔' },
           ].map(s => (
             <div key={s.label} className="bg-gray-900 border border-gray-800 rounded-xl p-4">
               <p className="text-2xl mb-1">{s.icon}</p>
@@ -88,19 +96,15 @@ export default function AdminDashboard() {
         <div className="flex gap-3 flex-wrap">
           <input type="text" placeholder="Buscar emergencia..."
             value={busqueda} onChange={e => setBusqueda(e.target.value)}
-            className="flex-1 min-w-48 bg-gray-900 border border-gray-700 rounded-lg
-                       px-3 py-2 text-white text-sm placeholder-gray-500
-                       focus:outline-none focus:border-red-500" />
+            className="flex-1 min-w-48 bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-red-500" />
           <select value={filtro} onChange={e => setFiltro(e.target.value)}
-            className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2
-                       text-white text-sm focus:outline-none focus:border-red-500">
+            className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-red-500">
             <option value="todas">Todas las secciones</option>
             <option value="1">Sección 1 — Físicas</option>
             <option value="2">Sección 2 — Signos vitales</option>
           </select>
           <button onClick={() => navigate('/admin/emergencias/nueva')}
-            className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm
-                       font-semibold rounded-lg transition-colors">
+            className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition-colors">
             + Nueva emergencia
           </button>
         </div>
@@ -149,8 +153,7 @@ export default function AdminDashboard() {
                     </td>
                     <td className="px-4 py-3 text-right">
                       <button onClick={() => navigate(`/admin/emergencias/${e.id}`)}
-                        className="text-xs px-3 py-1.5 rounded-lg border border-gray-700
-                                   text-gray-300 hover:text-white hover:border-gray-500 transition-colors">
+                        className="text-xs px-3 py-1.5 rounded-lg border border-gray-700 text-gray-300 hover:text-white hover:border-gray-500 transition-colors">
                         Editar
                       </button>
                     </td>

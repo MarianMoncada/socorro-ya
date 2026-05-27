@@ -9,6 +9,7 @@ import AdminLogin          from './pages/admin/Login'
 import AdminDashboard      from './pages/admin/Dashboard'
 import EditarEmergencia    from './pages/admin/EditarEmergencia'
 import Estadisticas        from './pages/admin/Estadisticas'
+import Notificaciones      from './pages/admin/Notificaciones'
 import AdminGuard          from './components/admin/AdminGuard'
 
 export default function App() {
@@ -30,6 +31,9 @@ export default function App() {
         } />
         <Route path="/admin/estadisticas" element={
           <AdminGuard><Estadisticas /></AdminGuard>
+        } />
+        <Route path="/admin/notificaciones" element={
+          <AdminGuard><Notificaciones /></AdminGuard>
         } />
       </Routes>
     </BrowserRouter>
