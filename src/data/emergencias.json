@@ -1,117 +1,122 @@
 [
   {
     "id": "atragantamiento",
-    "titulo": "Atragantamiento",
+    "titulo": "Me estoy atragantando",
     "urgencia": "critico",
     "llamar_911": true,
+    "tipo_protocolo": "necesita-ayuda",
+    "seccion": 1,
+    "icono": "🫁",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿La persona puede hablar, toser o respirar?",
+        "texto": "¿Puedes hablar o toser aunque sea con dificultad?",
         "opciones": [
           {
-            "respuesta": "Sí, aunque con dificultad",
-            "siguiente": "p2"
+            "respuesta": "Sí, puedo toser o hacer algún sonido",
+            "siguiente": "toser_activo"
           },
           {
-            "respuesta": "No, no puede hacer nada de eso",
-            "siguiente": "heimlich"
+            "respuesta": "No, no puedo toser ni hablar",
+            "siguiente": "p2"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿La persona tiene más de 1 año de edad?",
+        "texto": "¿Hay alguien cerca que te pueda ayudar?",
         "opciones": [
           {
-            "respuesta": "Sí, es niño mayor o adulto",
-            "siguiente": "toser_activo"
+            "respuesta": "Sí, hay alguien conmigo",
+            "siguiente": "guiar_heimlich"
           },
           {
-            "respuesta": "No, es bebé menor de 1 año",
-            "siguiente": "heimlich_bebe"
+            "respuesta": "No, estoy solo/a",
+            "siguiente": "heimlich_solo"
           }
         ]
       }
     ],
     "protocolos": {
-      "heimlich": {
-        "nombre": "Maniobra de Heimlich",
-        "pasos": [
-          {
-            "n": 1,
-            "texto": "Párate detrás de la persona y rodea su cintura con tus brazos.",
-            "timer": null
-          },
-          {
-            "n": 2,
-            "texto": "Cierra un puño entre el ombligo y las costillas, pulgar hacia adentro.",
-            "timer": null
-          },
-          {
-            "n": 3,
-            "texto": "Agarra tu puño con la otra mano.",
-            "timer": null
-          },
-          {
-            "n": 4,
-            "texto": "Haz 5 compresiones hacia adentro y arriba con fuerza. Repite hasta que salga.",
-            "timer": 30
-          },
-          {
-            "n": 5,
-            "texto": "Si pierde la consciencia, inicia RCP y llama al 911.",
-            "timer": null
-          }
-        ]
-      },
       "toser_activo": {
-        "nombre": "Obstrucción parcial: anima a toser",
+        "nombre": "Tose con fuerza — obstrucción parcial",
         "pasos": [
           {
             "n": 1,
-            "texto": "Anima a la persona a toser con fuerza de forma continua.",
+            "texto": "Tose con toda la fuerza que puedas. No pares aunque duela.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "No le des palmadas ni la interrumpas si está tosiendo.",
+            "texto": "Inclínate hacia adelante mientras toses para ayudar a que salga.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Quédate a su lado. Si deja de poder toser, aplica la maniobra de Heimlich.",
+            "texto": "Si en cualquier momento ya no puedes toser, pide ayuda gritando o activando el SOS.",
             "timer": null
           }
         ]
       },
-      "heimlich_bebe": {
-        "nombre": "Primeros auxilios para bebé menor de 1 año",
+      "guiar_heimlich": {
+        "nombre": "Muestra esta pantalla a quien está contigo",
+        "pantalla_ayudante": true,
+        "mensaje_ayudante": "Esta persona se está atragantando. Necesita que le hagas la maniobra de Heimlich ahora.",
         "pasos": [
           {
             "n": 1,
-            "texto": "Sostén al bebé boca abajo en tu antebrazo, cabeza más baja que el cuerpo.",
+            "texto": "PARA QUIEN AYUDA: Párate detrás de la persona y rodea su cintura con tus brazos.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Da 5 palmadas firmes entre los omóplatos con la palma.",
+            "texto": "PARA QUIEN AYUDA: Cierra un puño entre su ombligo y sus costillas, pulgar hacia adentro.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Voltea al bebé boca arriba sobre tu otro antebrazo.",
+            "texto": "PARA QUIEN AYUDA: Agarra tu puño con la otra mano.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Da 5 compresiones en el centro del pecho con 2 dedos.",
+            "texto": "PARA QUIEN AYUDA: Haz 5 jalones fuertes hacia adentro y hacia arriba. Repite hasta que salga.",
+            "timer": 30
+          },
+          {
+            "n": 5,
+            "texto": "PARA QUIEN AYUDA: Si pierde la consciencia, llama al 911 y empieza RCP.",
+            "timer": null
+          }
+        ]
+      },
+      "heimlich_solo": {
+        "nombre": "Heimlich solo/a — técnica de emergencia",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Activa el SOS ahora mismo. Luego sigue estos pasos.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "Coloca tu puño con el pulgar hacia adentro entre tu ombligo y tus costillas.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Agarra tu puño con la otra mano y haz jalones hacia adentro y arriba con fuerza.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Alternativa: lánzate el abdomen contra el respaldo de una silla o el borde de una mesa con fuerza.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Repite el ciclo. Llama al 911 inmediatamente.",
-            "timer": 30
+            "texto": "Repite hasta que el objeto salga o pierdas la consciencia. El 911 ya está alertado.",
+            "timer": null
           }
         ]
       }
@@ -120,87 +125,172 @@
   },
   {
     "id": "paro-cardiaco",
-    "titulo": "Paro cardíaco",
+    "titulo": "Creo que me va a dar un paro",
     "urgencia": "critico",
     "llamar_911": true,
+    "tipo_protocolo": "solo-911",
+    "seccion": 1,
+    "icono": "❤️",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿La persona respira con normalidad?",
+        "texto": "¿Sientes dolor, presión u opresión fuerte en el pecho ahora mismo?",
         "opciones": [
           {
-            "respuesta": "No respira o solo hace jadeos ocasionales",
-            "siguiente": "rcp"
+            "respuesta": "Sí, tengo dolor o presión en el pecho",
+            "siguiente": "p2"
+          },
+          {
+            "respuesta": "No, encontré a alguien que no responde",
+            "siguiente": "p3"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿Estás solo/a o hay alguien contigo?",
+        "opciones": [
+          {
+            "respuesta": "Estoy solo/a",
+            "siguiente": "infarto_solo"
+          },
+          {
+            "respuesta": "Hay alguien conmigo",
+            "siguiente": "infarto_acompanado"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "texto": "¿La persona que encontraste respira con normalidad?",
+        "opciones": [
+          {
+            "respuesta": "No respira o hace jadeos raros",
+            "siguiente": "guiar_rcp"
           },
           {
             "respuesta": "Respira pero está inconsciente",
-            "siguiente": "posicion_lateral"
+            "siguiente": "guiar_lateral"
           }
         ]
       }
     ],
     "protocolos": {
-      "rcp": {
-        "nombre": "RCP básica (Reanimación Cardiopulmonar)",
+      "infarto_solo": {
+        "nombre": "Posible infarto — estás solo/a",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 ahora o pide a alguien que lo haga.",
+            "texto": "Activa el SOS ahora. El 911 y tu contacto de emergencia serán alertados.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Coloca a la persona boca arriba sobre una superficie firme y plana.",
+            "texto": "Desbloquea la puerta de entrada para que los servicios de emergencia puedan entrar.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Entrelaza tus manos y colócalas en el centro del pecho. Brazos rectos.",
+            "texto": "Siéntate o recuéstate en el suelo. No te quedes de pie.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Presiona fuerte y rápido: 30 compresiones al ritmo de Stayin Alive.",
-            "timer": 18
-          },
-          {
-            "n": 5,
-            "texto": "Inclina la cabeza hacia atrás, levanta el mentón y da 2 respiraciones boca a boca.",
+            "texto": "Si tienes aspirina de 300 mg y no eres alérgico/a, mastica una (no la tragues entera).",
             "timer": null
           },
           {
-            "n": 6,
-            "texto": "Repite: 30 compresiones + 2 respiraciones. No te detengas hasta que llegue ayuda.",
-            "timer": 18
+            "n": 5,
+            "texto": "Mantén el celular en la mano. No cuelgues si el 911 te devuelve la llamada.",
+            "timer": null
           }
         ]
       },
-      "posicion_lateral": {
-        "nombre": "Posición lateral de seguridad",
+      "infarto_acompanado": {
+        "nombre": "Posible infarto — hay alguien contigo",
         "pasos": [
           {
             "n": 1,
-            "texto": "Coloca el brazo más cercano a ti en ángulo recto respecto al cuerpo.",
+            "texto": "Dile a quien está contigo que llame al 911 ahora mismo.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Lleva el brazo lejano sobre el pecho; apoya el dorso de esa mano en la mejilla.",
+            "texto": "Siéntate en posición cómoda, levemente reclinado. No te acuestes completamente.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Dobla la rodilla lejana hacia arriba.",
+            "texto": "Afloja tu ropa: cuello, cinturón, botones del pecho.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Jala esa rodilla hacia ti para voltear a la persona de lado.",
+            "texto": "Si tienes aspirina y no eres alérgico/a, mastica una de 300 mg.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Ajusta la mano bajo la mejilla. Monitorea que siga respirando.",
+            "texto": "No hagas esfuerzos. Respira lento y espera al 911.",
+            "timer": null
+          }
+        ]
+      },
+      "guiar_rcp": {
+        "nombre": "Guía a alguien para hacer RCP",
+        "pantalla_ayudante": true,
+        "mensaje_ayudante": "Esta persona necesita RCP urgente. El 911 ya fue llamado.",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "PARA QUIEN AYUDA: Llama al 911 si aún no lo has hecho.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "PARA QUIEN AYUDA: Coloca la persona boca arriba en superficie dura.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "PARA QUIEN AYUDA: Entrelaza manos en el centro del pecho. Brazos rectos.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "PARA QUIEN AYUDA: 30 compresiones fuertes y rápidas al ritmo de Stayin Alive.",
+            "timer": 18
+          },
+          {
+            "n": 5,
+            "texto": "PARA QUIEN AYUDA: 2 respiraciones boca a boca. Repite hasta que llegue ayuda.",
+            "timer": null
+          }
+        ]
+      },
+      "guiar_lateral": {
+        "nombre": "Posición lateral de seguridad",
+        "pantalla_ayudante": true,
+        "mensaje_ayudante": "Esta persona necesita ser colocada de lado. Sigue estos pasos.",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "PARA QUIEN AYUDA: Coloca el brazo más cercano en ángulo recto.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "PARA QUIEN AYUDA: Lleva el otro brazo sobre el pecho, dorso en la mejilla.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "PARA QUIEN AYUDA: Dobla la rodilla lejana y jálala para voltearla de lado.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "PARA QUIEN AYUDA: Verifica que respira. Monitorea hasta que llegue ayuda.",
             "timer": null
           }
         ]
@@ -210,20 +300,23 @@
   },
   {
     "id": "quemaduras",
-    "titulo": "Quemaduras",
+    "titulo": "Me quemé",
     "urgencia": "alto",
     "llamar_911": false,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 1,
+    "icono": "🔥",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿Cómo ocurrió la quemadura?",
+        "texto": "¿Cómo te quemaste?",
         "opciones": [
           {
-            "respuesta": "Fuego, líquido caliente, vapor u objeto caliente",
+            "respuesta": "Con fuego, líquido caliente, vapor u objeto caliente",
             "siguiente": "p2"
           },
           {
-            "respuesta": "Electricidad o producto químico",
+            "respuesta": "Con electricidad o producto químico",
             "siguiente": "electrica_quimica"
           }
         ]
@@ -233,7 +326,7 @@
         "texto": "¿La quemadura es grande o está en cara, manos, pies o genitales?",
         "opciones": [
           {
-            "respuesta": "No, es pequeña (menor al tamaño de la palma)",
+            "respuesta": "No, es pequeña (menor al tamaño de mi palma)",
             "siguiente": "p3"
           },
           {
@@ -251,7 +344,7 @@
             "siguiente": "agua_fria"
           },
           {
-            "respuesta": "Tiene ampollas, piel blanca o parece profunda",
+            "respuesta": "Tiene ampollas o la piel se ve blanca o muy profunda",
             "siguiente": "cubrir_y_hospital"
           }
         ]
@@ -259,56 +352,56 @@
     ],
     "protocolos": {
       "agua_fria": {
-        "nombre": "Quemadura leve: enfriar con agua",
+        "nombre": "Quemadura leve — enfría con agua",
         "pasos": [
           {
             "n": 1,
-            "texto": "Enfría con agua fría (no helada) durante al menos 10 minutos.",
+            "texto": "Pon la zona quemada bajo agua fría (no helada) durante al menos 10 minutos.",
             "timer": 600
           },
           {
             "n": 2,
-            "texto": "No uses hielo, pasta dental, mantequilla ni cremas caseras.",
+            "texto": "No te pongas hielo, pasta dental, mantequilla ni cremas caseras.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Cubre suavemente con gasa estéril o tela limpia. No aprietes.",
+            "texto": "Cúbrete con gasa estéril o tela limpia suavemente. No aprietes.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Si el dolor persiste más de 2 horas o aparecen ampollas, visita un médico.",
+            "texto": "Si el dolor no mejora en 2 horas o aparecen ampollas, ve al médico.",
             "timer": null
           }
         ]
       },
       "cubrir_y_hospital": {
-        "nombre": "Quemadura grave: cubrir y buscar atención",
+        "nombre": "Quemadura grave — ve a urgencias",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 si la quemadura es muy extensa.",
+            "texto": "Llama al 911 si la quemadura es muy extensa o no puedes moverte.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "No retires ropa pegada a la piel. No revientes ampollas.",
+            "texto": "No te retires ropa pegada a la piel. No revientes ampollas.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Cubre con gasa estéril húmeda o tela limpia muy suavemente.",
+            "texto": "Cúbrete con gasa estéril húmeda o tela limpia muy suavemente.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Mantén a la persona abrigada para evitar shock.",
+            "texto": "Abrígate para evitar entrar en shock.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Lleva a la persona a urgencias inmediatamente.",
+            "texto": "Ve a urgencias lo antes posible.",
             "timer": null
           }
         ]
@@ -318,17 +411,22 @@
         "pasos": [
           {
             "n": 1,
-            "texto": "Eléctrica: NO toques a la persona si aún está en contacto. Corta la corriente primero.",
+            "texto": "Llama al 911 inmediatamente.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Química: retira ropa contaminada con guantes. Enjuaga con agua 20 minutos.",
-            "timer": 1200
+            "texto": "Eléctrica: aléjate de la fuente. No toques cables ni enchufes.",
+            "timer": null
           },
           {
             "n": 3,
-            "texto": "Llama al 911 en ambos casos. Requiere atención médica urgente.",
+            "texto": "Química: quítate la ropa contaminada y enjuaga con agua abundante 20 minutos.",
+            "timer": 1200
+          },
+          {
+            "n": 4,
+            "texto": "No te autotrates. Este tipo requiere atención médica urgente.",
             "timer": null
           }
         ]
@@ -338,121 +436,124 @@
   },
   {
     "id": "desmayo",
-    "titulo": "Desmayo",
+    "titulo": "Siento que me voy a desmayar",
     "urgencia": "alto",
     "llamar_911": false,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 1,
+    "icono": "💫",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿La persona ha recuperado la consciencia?",
+        "texto": "¿Ya te desmayaste y acabas de recuperarte, o sientes que te estás por desmayar?",
         "opciones": [
           {
-            "respuesta": "Sí, ya está despierta y responde",
-            "siguiente": "p2"
+            "respuesta": "Siento que me voy a desmayar ahora",
+            "siguiente": "prevenir_desmayo"
           },
           {
-            "respuesta": "No, sigue inconsciente",
-            "siguiente": "posicion_lateral_desmayo"
+            "respuesta": "Acabo de recuperarme de un desmayo",
+            "siguiente": "p2"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿Se golpeó la cabeza al caer?",
+        "texto": "¿Te golpeaste la cabeza al caer?",
         "opciones": [
           {
-            "respuesta": "No, no hubo golpe",
+            "respuesta": "No, no me golpeé la cabeza",
             "siguiente": "reposo"
           },
           {
-            "respuesta": "Sí, se golpeó la cabeza",
+            "respuesta": "Sí, me golpeé la cabeza al caer",
             "siguiente": "evaluar_golpe"
           }
         ]
       }
     ],
     "protocolos": {
-      "posicion_lateral_desmayo": {
-        "nombre": "Inconsciente: posición lateral de seguridad",
+      "prevenir_desmayo": {
+        "nombre": "Evita caerte — actúa ahora",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 si no recupera la consciencia en menos de 1 minuto.",
+            "texto": "Siéntate o recuéstate AHORA, antes de caerte. Baja al suelo si es necesario.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Colócala de lado para evitar que se ahogue si vomita.",
+            "texto": "Si estás sentado/a, baja la cabeza entre las rodillas.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Inclina la cabeza ligeramente hacia atrás para mantener la vía aérea abierta.",
+            "texto": "Afloja tu ropa del cuello y cintura.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Aflojar ropa ajustada en cuello y cintura.",
-            "timer": null
+            "texto": "Respira lento y profundo. La sensación debería pasar en 1-2 minutos.",
+            "timer": 120
           },
           {
             "n": 5,
-            "texto": "Monitorea la respiración hasta que llegue ayuda.",
+            "texto": "Si no mejoras o vuelves a desmayarte, pide ayuda o activa el SOS.",
             "timer": null
           }
         ]
       },
       "reposo": {
-        "nombre": "Desmayo recuperado: reposo y observación",
+        "nombre": "Ya te recuperaste — reposo",
         "pasos": [
           {
             "n": 1,
-            "texto": "Que la persona permanezca acostada 10 minutos antes de intentar levantarse.",
+            "texto": "Quédate acostado/a 10 minutos antes de intentar levantarte.",
             "timer": 600
           },
           {
             "n": 2,
-            "texto": "Afloja ropa apretada en cuello, pecho y cintura.",
+            "texto": "Afloja ropa del cuello y cintura.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si está en un lugar con calor, llévala a un lugar fresco con buena ventilación.",
+            "texto": "Si estás en un lugar caliente, muévete a un lugar fresco con ventilación.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Ofrece agua o un poco de azúcar si está completamente consciente y puede tragar.",
+            "texto": "Toma agua o algo con azúcar si puedes tragar sin dificultad.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Si el desmayo se repite o hay dolor en el pecho, busca atención médica.",
+            "texto": "Levántate MUY lento: primero siéntate, espera 2 minutos, luego párate.",
+            "timer": null
+          },
+          {
+            "n": 6,
+            "texto": "Si se repite o tienes dolor en el pecho, busca atención médica hoy.",
             "timer": null
           }
         ]
       },
       "evaluar_golpe": {
-        "nombre": "Golpe en la cabeza tras el desmayo",
+        "nombre": "Golpe en la cabeza — alerta",
         "pasos": [
           {
             "n": 1,
-            "texto": "No muevas a la persona si sospechas de lesión en el cuello o columna.",
+            "texto": "No te muevas bruscamente. Evalúa si tienes dolor de cabeza intenso, visión doble o confusión.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Busca signos de alarma: vómito, confusión, pupilas desiguales, sangrado.",
+            "texto": "Si tienes náuseas, vómito o confusión, llama al 911 o pide a alguien que te lleve a urgencias.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si hay algún signo de alarma, llama al 911 de inmediato.",
-            "timer": null
-          },
-          {
-            "n": 4,
-            "texto": "Aunque no haya signos de alarma, lleva a la persona a urgencias para evaluación.",
+            "texto": "Aunque te sientas bien, un médico debe evaluarte hoy si te golpeaste la cabeza.",
             "timer": null
           }
         ]
@@ -462,16 +563,19 @@
   },
   {
     "id": "hemorragia",
-    "titulo": "Hemorragia",
+    "titulo": "Tengo una herida con sangrado",
     "urgencia": "critico",
     "llamar_911": true,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 1,
+    "icono": "🩸",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿La herida está en la cabeza, cuello o pecho?",
+        "texto": "¿La herida está en tu cabeza, cuello o pecho?",
         "opciones": [
           {
-            "respuesta": "No, está en brazo, pierna u otra zona del cuerpo",
+            "respuesta": "No, está en mi brazo, pierna u otra zona",
             "siguiente": "p2"
           },
           {
@@ -482,7 +586,7 @@
       },
       {
         "id": "p2",
-        "texto": "¿El sangrado sigue siendo abundante tras 5 minutos de presión?",
+        "texto": "¿El sangrado sigue siendo muy abundante tras 5 minutos de presión?",
         "opciones": [
           {
             "respuesta": "No, el sangrado ha disminuido",
@@ -497,86 +601,86 @@
     ],
     "protocolos": {
       "presion_directa": {
-        "nombre": "Control de sangrado con presión directa",
+        "nombre": "Presión directa — puedes hacerlo tú",
         "pasos": [
           {
             "n": 1,
-            "texto": "Usa tela limpia o gasa y presiona firmemente sobre la herida sin soltar.",
+            "texto": "Presiona firmemente la herida con una tela limpia o gasa. No sueltes.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Mantén la presión constante durante al menos 10 minutos sin retirar la tela.",
+            "texto": "Mantén la presión constante 10 minutos sin retirar la tela.",
             "timer": 600
           },
           {
             "n": 3,
-            "texto": "Si la tela se empapa, agrega más tela encima sin retirar la primera.",
+            "texto": "Si la tela se empapa, agrega más tela encima sin quitar la primera.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Eleva la zona lesionada por encima del nivel del corazón si es posible.",
+            "texto": "Eleva la zona lesionada por encima del nivel de tu corazón si puedes.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Acude a urgencias para revisar y suturar la herida si es necesario.",
+            "texto": "Ve a urgencias para evaluar si necesitas puntos.",
             "timer": null
           }
         ]
       },
       "torniquete": {
-        "nombre": "Sangrado grave: torniquete improvisado",
+        "nombre": "Sangrado grave — torniquete",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 inmediatamente.",
+            "texto": "Activa el SOS ahora. El 911 está siendo alertado.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Aplica presión directa con la mayor fuerza posible mientras preparas el torniquete.",
+            "texto": "Sigue presionando con la máxima fuerza mientras te preparas.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Usa una tela ancha (no cordón ni alambre) y átala a 5 cm por encima de la herida.",
+            "texto": "Usa una tela ancha (no cordón ni alambre) y átala 5 cm por encima de la herida.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Aprieta hasta que el sangrado se detenga. Anota la hora de aplicación.",
+            "texto": "Aprieta hasta que el sangrado se detenga. Anota la hora en tu mano.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "No retires el torniquete. Solo personal médico debe hacerlo.",
+            "texto": "No retires el torniquete. Solo personal médico puede hacerlo.",
             "timer": null
           }
         ]
       },
       "hospital_urgente": {
-        "nombre": "Herida en zona crítica: no manipular",
+        "nombre": "Herida en zona crítica — urgente",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 inmediatamente.",
+            "texto": "Activa el SOS ahora. Llama al 911.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "NO retires ningún objeto incrustado. Estabilízalo con telas a los lados sin presionar.",
+            "texto": "No retires ningún objeto incrustado. Estabilízalo sin presionar.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Cubre la herida con tela limpia sin aplicar presión directa en cuello o pecho.",
+            "texto": "Cubre con tela limpia sin aplicar presión directa en cuello o pecho.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Mantén a la persona quieta y abrigada. Habla con ella para mantenerla consciente.",
+            "texto": "Quédate quieto/a. Si hay alguien contigo, pídele que se quede y hable contigo.",
             "timer": null
           }
         ]
@@ -586,116 +690,164 @@
   },
   {
     "id": "convulsiones",
-    "titulo": "Convulsiones",
+    "titulo": "Siento que voy a convulsionar",
     "urgencia": "alto",
     "llamar_911": false,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 1,
+    "icono": "⚡",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿La convulsión lleva más de 5 minutos sin detenerse?",
+        "texto": "¿Estás sintiendo el aura (señal de advertencia) antes de una convulsión?",
         "opciones": [
           {
-            "respuesta": "Sí, lleva más de 5 minutos",
-            "siguiente": "convulsion_prolongada"
+            "respuesta": "Sí, siento que viene una convulsión (tengo epilepsia)",
+            "siguiente": "preparar_epilepsia"
           },
           {
-            "respuesta": "No, duró menos de 5 minutos o ya terminó",
+            "respuesta": "Acabo de recuperarme de una convulsión",
             "siguiente": "p2"
+          },
+          {
+            "respuesta": "Vi a alguien tener una convulsión y necesito ayudarlo",
+            "siguiente": "p3"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿Es la primera vez que le ocurre o no tiene diagnóstico de epilepsia?",
+        "texto": "¿Es la primera vez que te pasa o tienes diagnóstico de epilepsia?",
         "opciones": [
           {
-            "respuesta": "Primera vez o sin diagnóstico previo",
-            "siguiente": "post_primera_vez"
+            "respuesta": "Tengo epilepsia con diagnóstico previo",
+            "siguiente": "post_epilepsia"
           },
           {
-            "respuesta": "Tiene epilepsia con diagnóstico conocido",
+            "respuesta": "Es la primera vez que me pasa",
+            "siguiente": "post_primera_vez"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "texto": "¿La convulsión lleva más de 5 minutos sin detenerse?",
+        "opciones": [
+          {
+            "respuesta": "Sí, más de 5 minutos",
+            "siguiente": "convulsion_prolongada"
+          },
+          {
+            "respuesta": "No, ya terminó o duró menos de 5 minutos",
             "siguiente": "post_epilepsia"
           }
         ]
       }
     ],
     "protocolos": {
-      "post_epilepsia": {
-        "nombre": "Después de una convulsión (con diagnóstico previo)",
+      "preparar_epilepsia": {
+        "nombre": "Actúa antes de que empiece",
         "pasos": [
           {
             "n": 1,
-            "texto": "Protege a la persona de golpes: retira objetos cercanos y pon algo suave bajo su cabeza.",
+            "texto": "Bájate al suelo ya. Siéntate o recuéstate en una superficie blanda si puedes.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "NO sujetes a la persona, NO metas nada en su boca, NO des agua ni medicamentos.",
+            "texto": "Aleja objetos duros o cortantes de tu alrededor. Aléjate de escaleras.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Cuando termine, colócala de lado para evitar que se ahogue.",
+            "texto": "Si hay alguien cerca, llámalo ahora con voz fuerte.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Habla con calma y quédate a su lado hasta que esté completamente consciente.",
+            "texto": "Activa el SOS para alertar a tu contacto de emergencia.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Si se repite la convulsión o no recupera la consciencia, llama al 911.",
+            "texto": "Si tienes medicación de rescate prescrita y tiempo, tómala según tu plan.",
+            "timer": null
+          }
+        ]
+      },
+      "post_epilepsia": {
+        "nombre": "Después de tu convulsión",
+        "pasos": [
+          {
+            "n": 1,
+            "texto": "Quédate acostado/a de lado. Es normal sentirte confundido/a y cansado/a.",
+            "timer": null
+          },
+          {
+            "n": 2,
+            "texto": "No te levantes de inmediato. Espera a sentirte completamente orientado/a.",
+            "timer": null
+          },
+          {
+            "n": 3,
+            "texto": "Si alguien está contigo, pídele que se quede hasta que te sientas bien.",
+            "timer": null
+          },
+          {
+            "n": 4,
+            "texto": "Si se repite la convulsión o no te recuperas bien, llama al 911.",
             "timer": null
           }
         ]
       },
       "post_primera_vez": {
-        "nombre": "Primera convulsión: evaluar y buscar atención",
+        "nombre": "Primera convulsión — ve al médico hoy",
         "pasos": [
           {
             "n": 1,
-            "texto": "Protege a la persona de golpes y ponla de lado cuando termine la convulsión.",
+            "texto": "Quédate acostado/a de lado hasta sentirte completamente orientado/a.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "NO sujetes a la persona durante la convulsión.",
+            "texto": "Anota cuánto duró y cómo fue: sacudidas, rigidez, pérdida de consciencia.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Anota cuánto tiempo duró y cómo fue (sacudidas, rigidez, pérdida de consciencia).",
+            "texto": "Una primera convulsión siempre requiere evaluación médica hoy, aunque te sientas bien.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Lleva a la persona a urgencias aunque parezca recuperada. La primera convulsión siempre requiere evaluación médica.",
+            "texto": "No manejes ni operes maquinaria hasta recibir evaluación médica.",
             "timer": null
           }
         ]
       },
       "convulsion_prolongada": {
-        "nombre": "Convulsión prolongada: emergencia médica",
+        "nombre": "Convulsión de más de 5 minutos — emergencia",
+        "pantalla_ayudante": true,
+        "mensaje_ayudante": "Esta persona lleva más de 5 minutos convulsionando. Llama al 911 ahora.",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 inmediatamente. Una convulsión de más de 5 minutos es una emergencia.",
+            "texto": "PARA QUIEN AYUDA: Llama al 911 inmediatamente.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Protege a la persona de golpes mientras llega la ayuda.",
+            "texto": "PARA QUIEN AYUDA: Retira objetos peligrosos. Pon algo suave bajo la cabeza.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "NO sujetes a la persona, NO metas nada en su boca.",
+            "texto": "PARA QUIEN AYUDA: NO sujetes a la persona ni metas nada en su boca.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Quédate a su lado y mantén libre su espacio hasta que llegue el servicio de emergencias.",
+            "texto": "PARA QUIEN AYUDA: Cuando termine, colócala de lado y monitorea hasta que llegue ayuda.",
             "timer": null
           }
         ]
@@ -705,30 +857,33 @@
   },
   {
     "id": "fractura",
-    "titulo": "Fractura",
+    "titulo": "Creo que me fracturé algo",
     "urgencia": "medio",
     "llamar_911": false,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 1,
+    "icono": "🦴",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿La fractura podría ser en cuello, espalda o cabeza?",
+        "texto": "¿El dolor podría ser en tu cuello, espalda o cabeza?",
         "opciones": [
           {
-            "respuesta": "No, es en brazo, pierna, costilla u otro hueso",
+            "respuesta": "No, es en mi brazo, pierna, costilla u otro hueso",
             "siguiente": "p2"
           },
           {
-            "respuesta": "Sí, o la persona no puede mover bien el cuello o espalda",
+            "respuesta": "Sí, o no puedo mover bien el cuello o la espalda",
             "siguiente": "fractura_columna"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿Hay hueso visible o la extremidad está muy deformada?",
+        "texto": "¿Hay hueso visible o la zona está muy deformada?",
         "opciones": [
           {
-            "respuesta": "No, solo hay dolor, inflamación o moretón",
+            "respuesta": "No, solo tengo dolor, inflamación o moretón",
             "siguiente": "fractura_cerrada"
           },
           {
@@ -740,81 +895,81 @@
     ],
     "protocolos": {
       "fractura_cerrada": {
-        "nombre": "Fractura cerrada: inmovilizar y trasladar",
+        "nombre": "Fractura cerrada — inmoviliza y ve al médico",
         "pasos": [
           {
             "n": 1,
-            "texto": "No intentes acomodar el hueso ni la articulación.",
+            "texto": "No intentes acomodar el hueso ni la articulación tú mismo/a.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Inmoviliza la zona con una tablilla improvisada (tabla, revistas) y vendaje, sin apretar.",
+            "texto": "Inmoviliza la zona con lo que tengas: revista, tabla o cartón. Sujétalo sin apretar.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Aplica hielo envuelto en tela durante 20 minutos para reducir la inflamación.",
+            "texto": "Aplica hielo envuelto en tela 20 minutos para reducir la inflamación.",
             "timer": 1200
           },
           {
             "n": 4,
-            "texto": "Lleva a la persona a urgencias para confirmar la fractura con rayos X.",
+            "texto": "Ve a urgencias para confirmar con rayos X.",
             "timer": null
           }
         ]
       },
       "fractura_abierta": {
-        "nombre": "Fractura abierta: cubrir y llamar al 911",
+        "nombre": "Fractura abierta — urgencias ya",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 o traslada de urgencia a un hospital.",
+            "texto": "Activa el SOS o llama al 911 si no puedes moverte.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "NO intentes limpiar la herida ni reintroducir el hueso.",
+            "texto": "No intentes limpiar la herida ni meter el hueso.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Cubre la herida con tela estéril limpia y húmeda sin presionar el hueso.",
+            "texto": "Cubre la herida con tela estéril limpia y húmeda suavemente.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Inmoviliza la extremidad en la posición en que está. No la muevas.",
+            "texto": "No muevas la extremidad. Quédate en la posición que estás hasta recibir ayuda.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Controla el sangrado aplicando presión en los bordes de la herida, no sobre el hueso.",
+            "texto": "Controla el sangrado presionando en los bordes de la herida, no sobre el hueso.",
             "timer": null
           }
         ]
       },
       "fractura_columna": {
-        "nombre": "Posible fractura de columna: no mover",
+        "nombre": "Posible fractura de columna — no te muevas",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 inmediatamente.",
+            "texto": "Activa el SOS ahora. No te muevas bajo ningún concepto.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "NO muevas a la persona bajo ningún concepto. Una mala maniobra puede causar parálisis.",
+            "texto": "Quédate exactamente como estás. Un movimiento mal hecho puede ser muy grave.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Habla con la persona para mantenerla calmada y quieta hasta que llegue la ayuda.",
+            "texto": "Si alguien está contigo, pídele que te sujete la cabeza para que no se mueva.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Si debe moverse por peligro inminente, hazlo con ayuda de varias personas manteniendo cabeza, cuello y espalda alineados.",
+            "texto": "Habla en voz alta para que sepan que estás consciente mientras esperas ayuda.",
             "timer": null
           }
         ]
@@ -824,20 +979,23 @@
   },
   {
     "id": "golpe-de-calor",
-    "titulo": "Golpe de calor",
+    "titulo": "Siento un golpe de calor",
     "urgencia": "critico",
     "llamar_911": true,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 1,
+    "icono": "☀️",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿La piel está muy caliente pero seca, sin sudor?",
+        "texto": "¿Tu piel está muy caliente pero SECA, sin sudor, y te sientes confundido/a?",
         "opciones": [
           {
-            "respuesta": "Sí, piel seca, muy caliente y la persona está confundida",
+            "respuesta": "Sí, piel seca y muy caliente, me siento muy mal",
             "siguiente": "golpe_calor_grave"
           },
           {
-            "respuesta": "No, suda abundantemente y está mareada o débil",
+            "respuesta": "No, estoy sudando mucho y me siento mareado/a o débil",
             "siguiente": "agotamiento_calor"
           }
         ]
@@ -845,170 +1003,173 @@
     ],
     "protocolos": {
       "golpe_calor_grave": {
-        "nombre": "Golpe de calor grave: enfriar urgente",
+        "nombre": "Golpe de calor grave — enfríate urgente",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911. El golpe de calor grave puede ser fatal sin atención médica.",
+            "texto": "Activa el SOS. El golpe de calor grave puede ser mortal. Busca sombra o aire acondicionado.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Mueve a la persona a un lugar fresco o con aire acondicionado de inmediato.",
+            "texto": "Quítate ropa extra. Mójate con agua fría: cuello, axilas e ingles.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Rocía o aplica agua fría en todo el cuerpo, especialmente en cuello, axilas e ingles.",
-            "timer": null
-          },
-          {
-            "n": 4,
-            "texto": "Abánica a la persona para acelerar el enfriamiento mientras espera la ambulancia.",
+            "texto": "Si hay alguien contigo, pídele que te abanice mientras te mojas.",
             "timer": 300
           },
           {
+            "n": 4,
+            "texto": "Si puedes tragar, bebe agua fría a sorbos pequeños.",
+            "timer": null
+          },
+          {
             "n": 5,
-            "texto": "Si está consciente y puede tragar, da agua fría a pequeños sorbos.",
+            "texto": "No te quedes solo/a. El 911 ya fue alertado.",
             "timer": null
           }
         ]
       },
       "agotamiento_calor": {
-        "nombre": "Agotamiento por calor: reposo y rehidratación",
+        "nombre": "Agotamiento por calor — refréscate",
         "pasos": [
           {
             "n": 1,
-            "texto": "Lleva a la persona a un lugar fresco, a la sombra o con aire acondicionado.",
+            "texto": "Muévete a un lugar fresco, a la sombra o con aire acondicionado.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Afloja la ropa y aplica paños húmedos fríos en frente, cuello y muñecas.",
+            "texto": "Quítate ropa extra y aplica paños fríos en frente, cuello y muñecas.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Da agua fría o bebida isotónica a pequeños sorbos si está consciente.",
+            "texto": "Bebe agua fría o bebida isotónica a sorbos frecuentes.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Si no mejora en 30 minutos, vomita o se desorienta, llama al 911.",
+            "texto": "Si no mejoras en 30 minutos o vomitas, llama al 911.",
             "timer": null
           }
         ]
       }
     },
-    "fuente": "Organización Mundial de la Salud, Guía de calor extremo 2023"
+    "fuente": "OMS, Guía de calor extremo 2023"
   },
   {
     "id": "intoxicacion",
-    "titulo": "Intoxicación",
+    "titulo": "Ingerí o inhalé algo tóxico",
     "urgencia": "alto",
     "llamar_911": true,
+    "tipo_protocolo": "solo-911",
+    "seccion": 1,
+    "icono": "☠️",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿Cómo ocurrió la intoxicación?",
+        "texto": "¿Cómo fue la intoxicación?",
         "opciones": [
           {
-            "respuesta": "Ingirió algo (comió, bebió o tomó algo)",
+            "respuesta": "Comí, bebí o tomé algo que me hizo mal",
             "siguiente": "p2"
           },
           {
-            "respuesta": "Inhaló un gas, vapor o sustancia",
+            "respuesta": "Inhalé un gas, vapor o sustancia",
             "siguiente": "intox_inhalacion"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿La persona está consciente y puede tragar?",
+        "texto": "¿Puedes mantenerte despierto/a y tragar sin dificultad?",
         "opciones": [
           {
-            "respuesta": "Sí, está despierta y responde",
+            "respuesta": "Sí, estoy consciente y puedo tragar",
             "siguiente": "intox_oral_consciente"
           },
           {
-            "respuesta": "No, está somnoliente, confundida o inconsciente",
-            "siguiente": "intox_inconsciente"
+            "respuesta": "Me siento muy somnoliento/a o confundido/a",
+            "siguiente": "intox_grave"
           }
         ]
       }
     ],
     "protocolos": {
       "intox_oral_consciente": {
-        "nombre": "Ingestión de sustancia: persona consciente",
+        "nombre": "Ingestión — estás consciente",
         "pasos": [
           {
             "n": 1,
-            "texto": "Identifica qué ingirió, cuánto y hace cuánto tiempo. Guarda el envase si lo hay.",
+            "texto": "Guarda el envase o anota qué tomaste, cuánto y hace cuánto. Eso es vital para el médico.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "NO induzcas el vómito a menos que el médico o el centro toxicológico lo indique.",
+            "texto": "NO te provoque el vómito. Puede empeorar la situación con ciertos tóxicos.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Llama al centro toxicológico o al 911 e informa exactamente qué sustancia ingirió.",
+            "texto": "Llama al 911 o al centro toxicológico e informa exactamente qué sustancia fue.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Sigue las instrucciones del operador. No des nada de comer ni beber sin autorización médica.",
+            "texto": "No comas ni bebas nada más sin indicación médica.",
             "timer": null
           }
         ]
       },
-      "intox_inconsciente": {
-        "nombre": "Intoxicación con persona inconsciente",
+      "intox_grave": {
+        "nombre": "Intoxicación grave — activa el SOS",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 inmediatamente.",
+            "texto": "Activa el SOS ahora. Tu contacto y el 911 serán alertados.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Coloca a la persona de lado para evitar que se ahogue si vomita.",
+            "texto": "Recuéstate de lado para que si vomitas no te ahoques.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "NO des nada por la boca. NO induzcas el vómito.",
+            "texto": "No tomes nada. No te provoque el vómito.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Guarda el envase o muestra de la sustancia para mostrársela al personal médico.",
+            "texto": "Guarda el envase de lo que tomaste cerca para mostrárselo al personal médico.",
             "timer": null
           }
         ]
       },
       "intox_inhalacion": {
-        "nombre": "Inhalación de gas o sustancia tóxica",
+        "nombre": "Inhalación — sal del área ya",
         "pasos": [
           {
             "n": 1,
-            "texto": "Saca a la persona del área contaminada al aire fresco de inmediato.",
+            "texto": "Sal del área contaminada al aire fresco INMEDIATAMENTE. No corras, camina.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "NO entres al área contaminada sin protección. Llama al 911 desde afuera.",
+            "texto": "Llama al 911 desde afuera. No vuelvas a entrar sin protección.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Afloja la ropa y coloca a la persona semisentada si está consciente.",
+            "texto": "Afloja tu ropa. Si puedes, siéntate levemente incorporado/a.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Si deja de respirar, inicia RCP si estás capacitado. Espera al servicio de emergencias.",
+            "texto": "Si dejas de respirar bien, activa el SOS y sigue las instrucciones del 911.",
             "timer": null
           }
         ]
@@ -1018,16 +1179,19 @@
   },
   {
     "id": "reaccion-alergica",
-    "titulo": "Reacción alérgica",
+    "titulo": "Creo que tengo reacción alérgica",
     "urgencia": "critico",
     "llamar_911": true,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 1,
+    "icono": "🚨",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿Tiene dificultad para respirar, cara o garganta hinchada?",
+        "texto": "¿Tienes dificultad para respirar, sientes la garganta cerrada o la cara hinchada?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene alguno de esos síntomas",
+            "respuesta": "Sí, tengo alguno de esos síntomas",
             "siguiente": "anafilaxia"
           },
           {
@@ -1039,56 +1203,56 @@
     ],
     "protocolos": {
       "anafilaxia": {
-        "nombre": "Anafilaxia: emergencia grave",
+        "nombre": "Anafilaxia — emergencia, actúa ahora",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 inmediatamente. La anafilaxia puede ser mortal en minutos.",
+            "texto": "Activa el SOS AHORA. La anafilaxia puede ser mortal en minutos.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Si la persona tiene epinefrina autoinyectable (EpiPen), ayúdala a aplicarla en el muslo externo.",
+            "texto": "Si tienes epinefrina autoinyectable (EpiPen), aplícatela en el muslo externo ya.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Acuesta a la persona con las piernas elevadas, a menos que tenga dificultad para respirar (en ese caso, siéntala).",
+            "texto": "Recuéstate con las piernas elevadas. Si tienes dificultad para respirar, siéntate incorporado/a.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Si la persona deja de respirar, inicia RCP.",
+            "texto": "No te muevas. El 911 y tu contacto de emergencia ya fueron alertados.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Mantente con ella hasta que llegue la ambulancia. No le des nada por la boca.",
-            "timer": null
+            "texto": "Si tienes un segundo EpiPen, puedes usarlo a los 5 minutos si los síntomas siguen.",
+            "timer": 300
           }
         ]
       },
       "reaccion_leve": {
-        "nombre": "Reacción alérgica leve",
+        "nombre": "Reacción leve — aléjate del alérgeno",
         "pasos": [
           {
             "n": 1,
-            "texto": "Aleja a la persona del alérgeno (planta, animal, alimento, insecto).",
+            "texto": "Aléjate de lo que causó la reacción: alimento, planta, animal o insecto.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Si tiene antihistamínico de venta libre y no es alérgico a él, puede tomarlo según la dosis indicada.",
+            "texto": "Si tienes antihistamínico de venta libre y no eres alérgico/a a él, toma la dosis indicada.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Aplica compresas frías en las zonas con picazón para aliviar el malestar.",
+            "texto": "Aplica compresas frías en las zonas con picazón.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Vigila si aparece dificultad para respirar, hinchazón de cara o mareo. Si ocurre, llama al 911.",
+            "texto": "Vigila si aparece dificultad para respirar o hinchazón de cara. Si ocurre, activa el SOS.",
             "timer": null
           }
         ]
@@ -1098,34 +1262,37 @@
   },
   {
     "id": "glucosa-baja",
-    "titulo": "Glucosa baja (Hipoglucemia)",
+    "titulo": "Creo que tengo glucosa baja",
     "urgencia": "critico",
     "llamar_911": false,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 2,
+    "icono": "🩸",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿Tienes acceso a un glucómetro ahora mismo?",
+        "texto": "¿Tienes un glucómetro a la mano ahora mismo?",
         "opciones": [
           {
-            "respuesta": "Sí, puedo medir la glucosa",
+            "respuesta": "Sí, puedo medir mi glucosa",
             "siguiente": "p2"
           },
           {
-            "respuesta": "No, no tengo glucómetro",
+            "respuesta": "No tengo glucómetro",
             "siguiente": "p3"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿Cuál es el resultado de la medición?",
+        "texto": "¿Cuál es tu resultado de glucosa?",
         "opciones": [
           {
-            "respuesta": "Menos de 70 mg/dL (glucosa baja confirmada)",
+            "respuesta": "Menos de 70 mg/dL",
             "siguiente": "p4"
           },
           {
-            "respuesta": "Entre 70 y 100 mg/dL (normal en ayunas)",
+            "respuesta": "Entre 70 y 100 mg/dL (normal en ayuno)",
             "siguiente": "glucosa_normal"
           },
           {
@@ -1136,10 +1303,10 @@
       },
       {
         "id": "p3",
-        "texto": "¿La persona presenta varios de estos síntomas al mismo tiempo: temblor, sudoración fría, palidez, hambre repentina, mareo, confusión o irritabilidad?",
+        "texto": "¿Sientes varios de estos síntomas al mismo tiempo: temblor, sudor frío, palidez, hambre urgente, mareo o confusión?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene varios de esos síntomas",
+            "respuesta": "Sí, tengo varios de esos síntomas",
             "siguiente": "p4"
           },
           {
@@ -1150,14 +1317,14 @@
       },
       {
         "id": "p4",
-        "texto": "¿La persona está consciente y puede tragar sin dificultad?",
+        "texto": "¿Puedes mantenerte despierto/a y tragar sin dificultad?",
         "opciones": [
           {
-            "respuesta": "Sí, está despierta y puede tragar",
+            "respuesta": "Sí, estoy consciente y puedo tragar",
             "siguiente": "hipo_consciente"
           },
           {
-            "respuesta": "No, está muy confundida, inconsciente o con convulsiones",
+            "respuesta": "Estoy muy confundido/a o casi inconsciente",
             "siguiente": "hipo_grave"
           }
         ]
@@ -1165,76 +1332,71 @@
     ],
     "protocolos": {
       "hipo_consciente": {
-        "nombre": "Hipoglucemia leve: elevar glucosa",
+        "nombre": "Glucosa baja — elévala ahora",
         "pasos": [
           {
             "n": 1,
-            "texto": "Da 15 g de azúcar de acción rápida: 3 sobres de azúcar, 150 ml de jugo de fruta natural, 150 ml de refresco regular (no diet) o 4 tabletas de glucosa.",
+            "texto": "Come o bebe 15 g de azúcar de acción rápida: 3 sobres de azúcar, 150 ml de jugo, 150 ml de refresco (no diet) o 4 tabletas de glucosa.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Espera 15 minutos sin que la persona haga esfuerzo físico.",
+            "texto": "Siéntate y no hagas esfuerzo. Espera 15 minutos.",
             "timer": 900
           },
           {
             "n": 3,
-            "texto": "Si tiene glucómetro, mide de nuevo. Si sigue bajo de 70 mg/dL, repite el paso 1.",
+            "texto": "Si tienes glucómetro, mídete de nuevo. Si sigue bajo de 70, repite el paso 1.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Cuando mejore, ofrece un alimento con carbohidratos complejos: galletas, pan o una fruta.",
+            "texto": "Cuando te sientas mejor, come algo con carbohidratos: galletas, pan o fruta.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Si no mejora tras 2 rondas de azúcar o empeora, llama al 911.",
+            "texto": "Si no mejoras en dos rondas o empeoras, activa el SOS.",
             "timer": null
           }
         ]
       },
       "hipo_grave": {
-        "nombre": "Hipoglucemia grave: llamar al 911",
+        "nombre": "Glucosa muy baja — activa el SOS",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 inmediatamente. La hipoglucemia grave sin tratamiento puede causar daño cerebral.",
+            "texto": "Activa el SOS ahora. El 911 y tu contacto serán alertados.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "NO des nada por la boca. Una persona inconsciente o muy confundida puede ahogarse.",
+            "texto": "No intentes comer ni beber nada. Con esta confusión puedes ahogarte.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Coloca a la persona de lado (posición lateral de seguridad) si está inconsciente.",
+            "texto": "Recuéstate de lado si puedes.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Si la persona tiene glucagón de emergencia prescrito y sabes usarlo, adminístralo según las instrucciones del kit.",
-            "timer": null
-          },
-          {
-            "n": 5,
-            "texto": "Monitorea la respiración hasta que llegue la ambulancia.",
+            "texto": "Si tienes glucagón de emergencia prescrito y aún puedes, adminístralo según las instrucciones.",
             "timer": null
           }
         ]
       },
       "glucosa_normal": {
-        "nombre": "Glucosa normal: evaluar otra causa",
+        "nombre": "Tu glucosa está normal",
         "pasos": [
           {
             "n": 1,
-            "texto": "La glucosa está en rango normal. Los síntomas pueden tener otra causa.",
+            "texto": "Tu glucosa está en rango normal. Los síntomas pueden tener otra causa.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Evalúa si hay otros síntomas: dolor de cabeza intenso, presión en el pecho, dificultad para respirar.",
+            "texto": "Evalúa si tienes dolor de cabeza intenso, presión en el pecho o dificultad para respirar.",
             "timer": null
           },
           {
@@ -1245,41 +1407,41 @@
         ]
       },
       "no_es_hipoglucemia": {
-        "nombre": "Glucosa elevada: posible hiperglucemia",
+        "nombre": "Tu glucosa está alta — no es hipoglucemia",
         "pasos": [
           {
             "n": 1,
-            "texto": "La medición indica glucosa alta, no baja. Consulta el protocolo de glucosa alta.",
+            "texto": "Tu medición indica glucosa alta, no baja.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "No administres azúcar ni jugos. Eso empeoraría la situación.",
+            "texto": "No te tomes azúcar ni jugos. Eso empeoraría la situación.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si la persona tiene síntomas graves (confusión, respiración acelerada), llama al 911.",
+            "texto": "Consulta el protocolo de glucosa alta si tienes síntomas de hiperglucemia.",
             "timer": null
           }
         ]
       },
       "evaluar_otro": {
-        "nombre": "Síntomas inespecíficos: observar",
+        "nombre": "Síntoma aislado — observa",
         "pasos": [
           {
             "n": 1,
-            "texto": "Con un síntoma aislado es difícil confirmar hipoglucemia sin medición.",
+            "texto": "Con un síntoma aislado sin glucómetro es difícil confirmar. Busca uno en una farmacia.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Si la persona es diabética y lleva más de 4 horas sin comer, puede ofrecerse un snack ligero con carbohidratos.",
+            "texto": "Si eres diabético/a y llevas más de 4 horas sin comer, puedes tomar un snack ligero.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Mide la glucosa si consigues un glucómetro. Si los síntomas empeoran, busca atención médica.",
+            "texto": "Si los síntomas empeoran, activa el SOS.",
             "timer": null
           }
         ]
@@ -1287,11 +1449,11 @@
     },
     "señales_sin_aparato": [
       "Temblor de manos involuntario",
-      "Sudoración fría y pegajosa sin calor ambiental",
+      "Sudoración fría y pegajosa",
       "Palidez repentina",
-      "Hambre urgente e intensa de golpe",
+      "Hambre urgente e intensa",
       "Mareo o sensación de desmayo",
-      "Irritabilidad o cambios de humor sin razón",
+      "Irritabilidad sin razón aparente",
       "Visión borrosa o doble",
       "Confusión o dificultad para hablar"
     ],
@@ -1299,34 +1461,37 @@
   },
   {
     "id": "glucosa-alta",
-    "titulo": "Glucosa alta (Hiperglucemia)",
+    "titulo": "Creo que tengo glucosa alta",
     "urgencia": "alto",
     "llamar_911": false,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 2,
+    "icono": "🍬",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿Tienes acceso a un glucómetro ahora mismo?",
+        "texto": "¿Tienes un glucómetro a la mano?",
         "opciones": [
           {
-            "respuesta": "Sí, puedo medir la glucosa",
+            "respuesta": "Sí, puedo medir mi glucosa",
             "siguiente": "p2"
           },
           {
-            "respuesta": "No, no tengo glucómetro",
+            "respuesta": "No tengo glucómetro",
             "siguiente": "p3"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿Cuál es el resultado de la medición?",
+        "texto": "¿Cuál es tu resultado?",
         "opciones": [
           {
             "respuesta": "Entre 180 y 300 mg/dL",
             "siguiente": "p4"
           },
           {
-            "respuesta": "Más de 300 mg/dL o 'HI' en el glucómetro",
+            "respuesta": "Más de 300 mg/dL o el glucómetro dice 'HI'",
             "siguiente": "hiper_grave"
           },
           {
@@ -1337,28 +1502,28 @@
       },
       {
         "id": "p3",
-        "texto": "¿La persona presenta varios de estos síntomas: sed intensa, orinar muy seguido, visión borrosa, cansancio extremo, aliento con olor a frutas o acetona?",
+        "texto": "¿Tienes varios de estos síntomas: sed intensa que no se calma, orinas muy seguido, visión borrosa, cansancio extremo, aliento con olor a frutas?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene varios de esos síntomas",
+            "respuesta": "Sí, tengo varios de esos síntomas",
             "siguiente": "p4"
           },
           {
-            "respuesta": "Solo uno o ninguno de esos síntomas",
+            "respuesta": "Solo uno o ninguno",
             "siguiente": "monitorear"
           }
         ]
       },
       {
         "id": "p4",
-        "texto": "¿Tiene además: respiración rápida y profunda, confusión, náuseas o vómito, o dolor abdominal intenso?",
+        "texto": "¿Tienes además: respiración rápida y profunda, confusión, náuseas o dolor abdominal intenso?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene alguno de esos síntomas adicionales",
+            "respuesta": "Sí, tengo alguno de esos síntomas adicionales",
             "siguiente": "hiper_grave"
           },
           {
-            "respuesta": "No, solo los síntomas básicos de sed y orinar mucho",
+            "respuesta": "No, solo sed y ganas de orinar mucho",
             "siguiente": "hiper_moderado"
           }
         ]
@@ -1366,101 +1531,96 @@
     ],
     "protocolos": {
       "hiper_moderado": {
-        "nombre": "Hiperglucemia moderada: hidratación y contacto médico",
+        "nombre": "Glucosa alta moderada — hidrátate",
         "pasos": [
           {
             "n": 1,
-            "texto": "Da agua pura a sorbos frecuentes. La hidratación ayuda a los riñones a eliminar el exceso de glucosa.",
+            "texto": "Bebe agua a sorbos frecuentes. Ayuda a tus riñones a eliminar el exceso de glucosa.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "NO des jugos, refrescos ni alimentos dulces. Agravan la situación.",
+            "texto": "No tomes jugos, refrescos ni nada dulce. Agravan la situación.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si la persona es diabética con insulina prescrita, contacta a su médico o sigue su plan de corrección.",
+            "texto": "Si tienes insulina prescrita, contacta a tu médico o sigue tu plan de corrección.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Evita actividad física intensa. El ejercicio puede empeorar la hiperglucemia si hay cetosis.",
+            "texto": "Evita esfuerzo físico intenso.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Mide la glucosa cada hora. Si sube o no baja, acude a urgencias.",
+            "texto": "Mide tu glucosa cada hora. Si sube o no baja, acude a urgencias.",
             "timer": null
           }
         ]
       },
       "hiper_grave": {
-        "nombre": "Crisis hiperglucémica: emergencia médica",
+        "nombre": "Crisis hiperglucémica — urgencias ya",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911. Una glucosa mayor a 300 mg/dL con síntomas puede indicar cetoacidosis diabética (CAD), una emergencia.",
+            "texto": "Activa el SOS. Una glucosa mayor a 300 con síntomas puede ser cetoacidosis (CAD), una emergencia.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Mantén a la persona en reposo y consciente. Habla con ella para mantenerla orientada.",
+            "texto": "Quédate en reposo y consciente.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si vomita, colócala de lado para evitar que se ahogue.",
+            "texto": "No te pongas insulina sin indicación médica directa.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "NO administres insulina sin indicación médica directa.",
-            "timer": null
-          },
-          {
-            "n": 5,
-            "texto": "Informa al médico: cuánto mide la glucosa, hace cuánto inició, qué medicamentos toma.",
+            "texto": "Ten listo qué medicamentos tomas para decírselo al médico.",
             "timer": null
           }
         ]
       },
       "hiper_leve": {
-        "nombre": "Glucosa levemente elevada: monitorear",
+        "nombre": "Glucosa levemente elevada — monitorea",
         "pasos": [
           {
             "n": 1,
-            "texto": "Una glucosa de hasta 180 mg/dL postprandial (después de comer) puede ser normal en personas diabéticas.",
+            "texto": "Una glucosa hasta 180 mg/dL después de comer puede ser normal si eres diabético/a.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Mantén hidratación con agua. Evita carbohidratos simples por el resto del día.",
+            "texto": "Toma agua. Evita carbohidratos simples por el resto del día.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Mide nuevamente en 2 horas. Si sube, contacta al médico.",
+            "texto": "Mídete nuevamente en 2 horas. Si sube, contacta a tu médico.",
             "timer": null
           }
         ]
       },
       "monitorear": {
-        "nombre": "Síntomas leves: observación",
+        "nombre": "Síntomas leves — observa",
         "pasos": [
           {
             "n": 1,
-            "texto": "Con síntomas leves y sin glucómetro es difícil confirmar. Busca uno en una farmacia cercana.",
+            "texto": "Con síntomas leves y sin glucómetro, busca uno en una farmacia cercana.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Mantén hidratación con agua. Evita azúcares mientras tanto.",
+            "texto": "Toma agua y evita azúcares mientras tanto.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si aparecen síntomas graves (confusión, vómito, respiración rápida), ve a urgencias sin esperar.",
+            "texto": "Si aparecen síntomas graves (confusión, vómito, respiración rápida), activa el SOS.",
             "timer": null
           }
         ]
@@ -1471,8 +1631,7 @@
       "Ganas de orinar muy frecuentes",
       "Visión borrosa o nublada",
       "Cansancio extremo sin causa aparente",
-      "Aliento con olor dulce, a frutas o acetona",
-      "Heridas que cicatrizan muy lentamente",
+      "Aliento con olor dulce o a acetona",
       "Náuseas o dolor de estómago",
       "Respiración rápida y profunda (señal de alarma grave)"
     ],
@@ -1480,34 +1639,37 @@
   },
   {
     "id": "presion-alta",
-    "titulo": "Presión alta (Hipertensión)",
+    "titulo": "Creo que tengo presión alta",
     "urgencia": "alto",
     "llamar_911": false,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 2,
+    "icono": "💢",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿Tienes acceso a un tensiómetro (baumanómetro) ahora mismo?",
+        "texto": "¿Tienes un tensiómetro (baumanómetro) a la mano?",
         "opciones": [
           {
-            "respuesta": "Sí, puedo tomar la presión",
+            "respuesta": "Sí, puedo medirme la presión",
             "siguiente": "p2"
           },
           {
-            "respuesta": "No, no tengo tensiómetro",
+            "respuesta": "No tengo tensiómetro",
             "siguiente": "p3"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿Cuál es la lectura del tensiómetro?",
+        "texto": "¿Cuál es tu lectura?",
         "opciones": [
           {
             "respuesta": "Sistólica ≥ 180 o diastólica ≥ 120 (ej: 185/110)",
             "siguiente": "p4"
           },
           {
-            "respuesta": "Sistólica entre 140–179 o diastólica entre 90–119",
+            "respuesta": "Sistólica entre 140-179 o diastólica entre 90-119",
             "siguiente": "hta_moderada"
           },
           {
@@ -1518,28 +1680,28 @@
       },
       {
         "id": "p3",
-        "texto": "¿La persona presenta varios de estos síntomas: dolor de cabeza intenso en la nuca, visión borrosa o con destellos, zumbido en los oídos, mareo intenso o náuseas?",
+        "texto": "¿Tienes dolor de cabeza intenso en la nuca, visión borrosa con destellos, zumbido en oídos o mareo intenso?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene varios de esos síntomas",
+            "respuesta": "Sí, tengo varios de esos síntomas",
             "siguiente": "p4"
           },
           {
-            "respuesta": "Solo uno o ninguno de esos síntomas",
+            "respuesta": "Solo uno o ninguno",
             "siguiente": "hta_vigilar"
           }
         ]
       },
       {
         "id": "p4",
-        "texto": "¿Tiene además: dolor de pecho, dificultad para respirar, confusión, pérdida de visión o dificultad para hablar?",
+        "texto": "¿Tienes además: dolor de pecho, dificultad para respirar, confusión o dificultad para hablar?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene alguno de esos síntomas adicionales",
+            "respuesta": "Sí, tengo alguno de esos síntomas",
             "siguiente": "crisis_hta"
           },
           {
-            "respuesta": "No, solo el dolor de cabeza y mareo",
+            "respuesta": "No, solo el dolor de cabeza y el mareo",
             "siguiente": "urgencia_hta"
           }
         ]
@@ -1547,51 +1709,46 @@
     ],
     "protocolos": {
       "crisis_hta": {
-        "nombre": "Crisis hipertensiva con daño a órgano: emergencia",
+        "nombre": "Crisis hipertensiva — activa el SOS",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 inmediatamente. Dolor de pecho + presión muy alta puede indicar infarto o ACV.",
+            "texto": "Activa el SOS. Dolor de pecho + presión muy alta puede indicar infarto o ACV.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Sienta a la persona en posición cómoda, levemente reclinada. No la acuestes completamente.",
+            "texto": "Siéntate cómodamente, levemente reclinado/a. No te acuestes completamente.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "NO le des ningún medicamento sin indicación médica, incluso si tiene antihipertensivos.",
+            "texto": "No tomes ningún medicamento sin indicación médica, aunque tengas antihipertensivos.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Mantén el ambiente tranquilo. Evita el estrés y el ruido.",
-            "timer": null
-          },
-          {
-            "n": 5,
-            "texto": "Monitorea la respiración y el estado de consciencia hasta que llegue ayuda.",
+            "texto": "Mantén la calma. Respira lento. El 911 ya fue alertado.",
             "timer": null
           }
         ]
       },
       "urgencia_hta": {
-        "nombre": "Urgencia hipertensiva: reposo y medicación",
+        "nombre": "Presión muy alta — reposo y medicación",
         "pasos": [
           {
             "n": 1,
-            "texto": "Indica a la persona que se siente o recueste en un lugar tranquilo y silencioso.",
+            "texto": "Siéntate o recuéstate en un lugar tranquilo y silencioso.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Si tiene medicamento antihipertensivo prescrito, que lo tome según su pauta habitual.",
+            "texto": "Si tienes antihipertensivo prescrito, tómalo según tu pauta habitual.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Espera 30 minutos en reposo absoluto y vuelve a medir la presión.",
+            "texto": "Descansa 30 minutos en reposo absoluto y vuelve a medirte.",
             "timer": 1800
           },
           {
@@ -1601,142 +1758,144 @@
           },
           {
             "n": 5,
-            "texto": "Si no baja o empeoran los síntomas, acude a urgencias.",
+            "texto": "Si no baja o empeoran los síntomas, ve a urgencias.",
             "timer": null
           }
         ]
       },
       "hta_moderada": {
-        "nombre": "Presión elevada moderada: reposo",
+        "nombre": "Presión elevada — reposo breve",
         "pasos": [
           {
             "n": 1,
-            "texto": "Pide a la persona que repose 5 minutos sentada antes de volver a medir.",
+            "texto": "Siéntate y descansa 5 minutos en calma antes de medirte de nuevo.",
             "timer": 300
           },
           {
             "n": 2,
-            "texto": "Si la segunda medición sigue elevada y tiene síntomas, sigue el protocolo de urgencia hipertensiva.",
+            "texto": "Si la segunda medición sigue elevada y tienes síntomas, sigue el protocolo de urgencia.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si no tiene síntomas, puede ser estrés o esfuerzo reciente. Reposo y monitoreo.",
+            "texto": "Si no tienes síntomas, puede ser estrés o esfuerzo reciente. Reposo y monitoreo.",
             "timer": null
           }
         ]
       },
       "hta_normal": {
-        "nombre": "Presión en rango aceptable",
+        "nombre": "Tu presión está en rango normal",
         "pasos": [
           {
             "n": 1,
-            "texto": "La lectura está dentro de rangos normales o de hipertensión leve.",
+            "texto": "Tu lectura está dentro de rangos normales o aceptables.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Los síntomas pueden tener otra causa. Mantén reposo y evalúa si mejoran.",
+            "texto": "Los síntomas pueden tener otra causa. Descansa y evalúa si mejoran.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si los síntomas persisten o empeoran, busca atención médica.",
+            "texto": "Si persisten o empeoran, busca atención médica.",
             "timer": null
           }
         ]
       },
       "hta_vigilar": {
-        "nombre": "Sin tensiómetro: síntomas leves, observar",
+        "nombre": "Sin tensiómetro — síntomas leves",
         "pasos": [
           {
             "n": 1,
-            "texto": "Busca un tensiómetro en farmacia, consultorio cercano o con un vecino.",
+            "texto": "Busca un tensiómetro en una farmacia o consultorio cercano.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Mientras tanto, pide a la persona que repose en silencio.",
+            "texto": "Mientras tanto, siéntate en silencio y descansa.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si aparecen síntomas más intensos (visión borrosa, dolor de pecho), ve a urgencias sin esperar.",
+            "texto": "Si aparecen síntomas más intensos (visión borrosa, dolor de pecho), activa el SOS.",
             "timer": null
           }
         ]
       }
     },
     "señales_sin_aparato": [
-      "Dolor de cabeza intenso, especialmente en la nuca",
-      "Visión borrosa, con destellos o 'moscas'",
+      "Dolor de cabeza intenso especialmente en la nuca",
+      "Visión borrosa con destellos o moscas",
       "Zumbido persistente en los oídos",
-      "Mareo intenso sin haber cambiado de posición",
-      "Náuseas sin causa digestiva aparente",
-      "Sensación de presión o pulsaciones en la cabeza",
+      "Mareo intenso sin cambio de posición",
+      "Náuseas sin causa digestiva",
       "Enrojecimiento del rostro y cuello",
-      "Dolor de pecho o dificultad para respirar (señal de alarma grave)"
+      "Dolor de pecho (señal de alarma grave)"
     ],
-    "fuente": "Sociedad Europea de Hipertensión, Guías 2023 / OMS"
+    "fuente": "Sociedad Europea de Hipertensión, Guías 2023"
   },
   {
     "id": "presion-baja",
-    "titulo": "Presión baja (Hipotensión)",
+    "titulo": "Creo que tengo presión baja",
     "urgencia": "medio",
     "llamar_911": false,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 2,
+    "icono": "💤",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿Tienes acceso a un tensiómetro ahora mismo?",
+        "texto": "¿Tienes tensiómetro a la mano?",
         "opciones": [
           {
-            "respuesta": "Sí, puedo medir la presión",
+            "respuesta": "Sí, puedo medirme la presión",
             "siguiente": "p2"
           },
           {
-            "respuesta": "No, no tengo tensiómetro",
+            "respuesta": "No tengo tensiómetro",
             "siguiente": "p3"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿Cuál es la lectura del tensiómetro?",
+        "texto": "¿Cuál es tu lectura?",
         "opciones": [
           {
             "respuesta": "Sistólica menor de 90 o diastólica menor de 60 (ej: 85/55)",
             "siguiente": "p4"
           },
           {
-            "respuesta": "La lectura está dentro de lo normal para esta persona",
+            "respuesta": "Está dentro de lo normal para mí",
             "siguiente": "hipo_normal"
           }
         ]
       },
       {
         "id": "p3",
-        "texto": "¿La persona presenta: mareo al levantarse, visión oscura o borrosa al cambiar de posición, sudoración fría, pulso débil o sensación de desmayo inminente?",
+        "texto": "¿Sientes mareo al levantarte, visión que se oscurece, sudor frío o sensación de desmayo inminente?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene varios de esos síntomas",
+            "respuesta": "Sí, tengo varios de esos síntomas",
             "siguiente": "p4"
           },
           {
-            "respuesta": "Solo uno o ninguno de esos síntomas",
+            "respuesta": "Solo uno o ninguno",
             "siguiente": "hipo_leve"
           }
         ]
       },
       {
         "id": "p4",
-        "texto": "¿La persona está consciente y puede responder preguntas con claridad?",
+        "texto": "¿Puedes responder preguntas con claridad y mantenerte consciente?",
         "opciones": [
           {
-            "respuesta": "Sí, está consciente aunque débil",
+            "respuesta": "Sí, estoy consciente aunque débil",
             "siguiente": "hipo_consciente"
           },
           {
-            "respuesta": "No, está desorientada, muy confundida o ha perdido la consciencia",
+            "respuesta": "Estoy muy desorientado/a o pierdo la consciencia",
             "siguiente": "hipo_grave"
           }
         ]
@@ -1744,148 +1903,141 @@
     ],
     "protocolos": {
       "hipo_consciente": {
-        "nombre": "Hipotensión moderada: elevar piernas",
+        "nombre": "Presión baja — recuéstate y eleva piernas",
         "pasos": [
           {
             "n": 1,
-            "texto": "Acuesta a la persona boca arriba y eleva sus piernas 30 cm por encima del nivel del corazón.",
+            "texto": "Recuéstate boca arriba y eleva tus piernas 30 cm por encima del nivel de tu corazón.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Mantén esa posición durante 10 minutos.",
+            "texto": "Mantén esa posición 10 minutos.",
             "timer": 600
           },
           {
             "n": 3,
-            "texto": "Ofrece agua con una pizca de sal o bebida isotónica si está completamente consciente.",
+            "texto": "Si puedes tragar, bebe agua con una pizca de sal o bebida isotónica.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Afloja ropa ajustada en cuello, pecho y cintura.",
+            "texto": "Afloja ropa ajustada del cuello, pecho y cintura.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Cuando mejore, que se incorpore muy lentamente: primero sentarse, esperar 2 minutos, luego levantarse.",
+            "texto": "Cuando mejores, incorpórate MUY lento: siéntate primero, espera 2 min, luego párate.",
             "timer": null
           },
           {
             "n": 6,
-            "texto": "Si no mejora en 10 minutos o vuelve a marear al levantarse, acude a urgencias.",
+            "texto": "Si no mejoras en 10 minutos o vuelves a marear al levantarte, busca atención médica.",
             "timer": null
           }
         ]
       },
       "hipo_grave": {
-        "nombre": "Hipotensión grave o shock: emergencia",
+        "nombre": "Presión muy baja — activa el SOS",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911. Una presión muy baja con confusión puede ser shock, una emergencia.",
+            "texto": "Activa el SOS. Presión muy baja con confusión puede ser shock.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Acuesta a la persona con piernas elevadas. NO la sientes ni la pongas de pie.",
+            "texto": "Recuéstate con tus piernas elevadas. No te sientes ni te pongas de pie.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Cúbrela con una manta para evitar hipotermia.",
+            "texto": "Cúbrete con algo para no enfriarte.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "NO des ningún medicamento sin indicación médica.",
-            "timer": null
-          },
-          {
-            "n": 5,
-            "texto": "Monitorea la respiración y el estado de consciencia hasta que llegue ayuda.",
+            "texto": "No tomes medicamentos sin indicación médica.",
             "timer": null
           }
         ]
       },
       "hipo_leve": {
-        "nombre": "Síntomas leves: hidratación y reposo",
+        "nombre": "Síntomas leves — hidrátate",
         "pasos": [
           {
             "n": 1,
-            "texto": "Pide a la persona que se siente o recueste unos minutos.",
+            "texto": "Siéntate o recuéstate unos minutos.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Ofrece agua. La deshidratación es la causa más común de presión baja leve.",
+            "texto": "Toma agua. La deshidratación es la causa más común de presión baja leve.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Evita levantarse bruscamente. Siempre pasar de acostado a sentado primero.",
+            "texto": "Nunca te levantes bruscamente. Siempre pasa primero a sentado.",
             "timer": null
           }
         ]
       },
       "hipo_normal": {
-        "nombre": "Presión en rango normal para la persona",
+        "nombre": "Tu presión está normal",
         "pasos": [
           {
             "n": 1,
-            "texto": "La lectura no indica hipotensión. Los síntomas pueden tener otra causa.",
+            "texto": "Tu lectura no indica hipotensión. Los síntomas pueden ser por cansancio o calor.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Evalúa hidratación y descanso reciente. A veces el cansancio o el calor causan síntomas similares.",
-            "timer": null
-          },
-          {
-            "n": 3,
-            "texto": "Si los síntomas persisten, busca atención médica.",
+            "texto": "Descansa e hidrátate. Si los síntomas persisten, busca atención médica.",
             "timer": null
           }
         ]
       }
     },
     "señales_sin_aparato": [
-      "Mareo o sensación de desmayo al levantarse",
-      "Visión que se oscurece o se nubla al cambiar de posición",
+      "Mareo al levantarte",
+      "Visión que se oscurece al cambiar de posición",
       "Debilidad general repentina",
-      "Piel pálida, fría y húmeda",
-      "Pulso que se siente débil o rápido",
+      "Piel pálida fría y húmeda",
+      "Pulso débil o muy rápido",
       "Náuseas sin causa digestiva",
-      "Confusión o dificultad para concentrarse"
+      "Confusión o dificultad para concentrarte"
     ],
-    "fuente": "Sociedad Europea de Cardiología, Guías de hipotensión 2022"
+    "fuente": "Sociedad Europea de Cardiología, Guías 2022"
   },
   {
     "id": "ictus",
-    "titulo": "Ictus / ACV",
+    "titulo": "Creo que estoy teniendo un ACV / ictus",
     "urgencia": "critico",
     "llamar_911": true,
+    "tipo_protocolo": "solo-911",
+    "seccion": 2,
+    "icono": "🧠",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "Aplica la prueba FAST: ¿La persona presenta ALGUNO de estos signos?",
+        "texto": "Aplica la prueba FAST en ti mismo/a: ¿tienes ALGUNO de estos signos aparecidos de golpe?",
         "opciones": [
           {
-            "respuesta": "Sí: sonrisa torcida, brazo que cae, habla rara o los tres",
+            "respuesta": "Sí: mi sonrisa está torcida, un brazo se cae solo, o mi habla es rara",
             "siguiente": "ictus_confirmado"
           },
           {
-            "respuesta": "No tiene ninguno de esos tres signos",
+            "respuesta": "No tengo ninguno de esos tres signos",
             "siguiente": "p2"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿Presenta de forma súbita alguno de estos síntomas: pérdida de visión en un ojo, dolor de cabeza explosivo 'el peor de su vida', pérdida de equilibrio o entumecimiento en un lado del cuerpo?",
+        "texto": "¿Sientes de forma súbita: pérdida de visión en un ojo, el peor dolor de cabeza de tu vida, pérdida de equilibrio o entumecimiento en un solo lado?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene alguno de esos síntomas de inicio brusco",
+            "respuesta": "Sí, tengo alguno de esos síntomas de inicio brusco",
             "siguiente": "ictus_confirmado"
           },
           {
@@ -1897,56 +2049,56 @@
     ],
     "protocolos": {
       "ictus_confirmado": {
-        "nombre": "FAST positivo: protocolo de ictus",
+        "nombre": "Posible ACV — actúa en los próximos 60 segundos",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 AHORA. El ictus es una emergencia tiempo-dependiente. Cada minuto cuenta.",
+            "texto": "Activa el SOS AHORA. El ACV es tiempo-dependiente. Cada minuto cuenta.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Anota la hora exacta en que aparecieron los primeros síntomas. El equipo médico lo necesita.",
+            "texto": "Anota la hora exacta en que notaste los primeros síntomas. Es crítico para el tratamiento.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Mantén a la persona sentada o recostada en posición cómoda. NO la dejes caminar sola.",
+            "texto": "Siéntate o recuéstate en el suelo. No intentes caminar solo/a.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "NO le des agua, alimentos, aspirina ni ningún medicamento.",
+            "texto": "No comas, bebas, tomes aspirina ni ningún medicamento.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Si pierde la consciencia, colócala de lado y verifica que respire.",
+            "texto": "Si puedes, desbloquea la puerta de entrada para que el 911 pueda entrar.",
             "timer": null
           },
           {
             "n": 6,
-            "texto": "Habla con calma con la persona. Dile que ya viene ayuda. No la dejes sola.",
+            "texto": "Mantén el celular en la mano y no cuelgues si el 911 te llama.",
             "timer": null
           }
         ]
       },
       "ictus_descartado": {
-        "nombre": "Síntomas no compatibles con ictus",
+        "nombre": "Síntomas no compatibles con ACV",
         "pasos": [
           {
             "n": 1,
-            "texto": "Los síntomas actuales no cumplen criterios de ictus según la prueba FAST.",
+            "texto": "Los síntomas actuales no cumplen los criterios de ACV según la prueba FAST.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Sin embargo, si los síntomas son nuevos, intensos o empeoran, ve a urgencias.",
+            "texto": "Sin embargo, si los síntomas son nuevos o empeoran, ve a urgencias hoy.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si en cualquier momento aparece asimetría facial, debilidad en un brazo o habla incomprensible, llama al 911 inmediatamente.",
+            "texto": "Si en cualquier momento notas asimetría facial, brazo que cae o habla rara, activa el SOS.",
             "timer": null
           }
         ]
@@ -1955,67 +2107,70 @@
     "prueba_fast": {
       "F": {
         "letra": "F",
-        "palabra": "Face (Cara)",
-        "instruccion": "Pide que sonría. ¿Un lado de la cara cae o está torcido?"
+        "palabra": "Cara",
+        "instruccion": "Intenta sonreír. ¿Un lado de tu cara cae o se ve torcido?"
       },
       "A": {
         "letra": "A",
-        "palabra": "Arms (Brazos)",
-        "instruccion": "Pide que levante ambos brazos. ¿Uno cae o no puede levantarlo?"
+        "palabra": "Brazos",
+        "instruccion": "Levanta ambos brazos. ¿Uno cae o no puedes sostenerlo?"
       },
       "S": {
         "letra": "S",
-        "palabra": "Speech (Habla)",
-        "instruccion": "Pide que repita una frase. ¿El habla es arrastrada, rara o incomprensible?"
+        "palabra": "Habla",
+        "instruccion": "Di una frase corta. ¿Tu habla suena arrastrada o rara?"
       },
       "T": {
         "letra": "T",
-        "palabra": "Time (Tiempo)",
-        "instruccion": "Si alguno es positivo, llama al 911 AHORA y anota la hora."
+        "palabra": "Tiempo",
+        "instruccion": "Si alguno es positivo, activa el SOS AHORA y anota la hora."
       }
     },
     "fuente": "American Stroke Association, Guía de ictus 2023"
   },
   {
     "id": "pre-infarto",
-    "titulo": "Signos de infarto",
+    "titulo": "Siento señales de un infarto",
     "urgencia": "critico",
     "llamar_911": true,
+    "tipo_protocolo": "solo-911",
+    "seccion": 2,
+    "icono": "💔",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿La persona siente dolor o presión en el pecho?",
+        "texto": "¿Sientes dolor, presión u opresión en el pecho?",
         "opciones": [
           {
-            "respuesta": "Sí, hay dolor, presión, opresión o peso en el pecho",
+            "respuesta": "Sí, hay dolor, presión o peso en mi pecho",
             "siguiente": "p2"
           },
           {
-            "respuesta": "No hay dolor de pecho, pero hay otros síntomas",
+            "respuesta": "No tengo dolor de pecho, pero tengo otros síntomas",
             "siguiente": "p3"
           }
         ]
       },
       {
         "id": "p2",
-        "texto": "¿El dolor dura más de 5 minutos o va y viene?",
+        "texto": "¿El dolor lleva más de 5 minutos o va y viene?",
         "opciones": [
           {
             "respuesta": "Sí, lleva más de 5 minutos o es intermitente",
             "siguiente": "infarto_probable"
           },
           {
-            "respuesta": "Fue un dolor agudo breve que ya pasó completamente",
+            "respuesta": "Fue un dolor agudo breve que ya pasó",
             "siguiente": "p4"
           }
         ]
       },
       {
         "id": "p3",
-        "texto": "¿Tiene náuseas, sudoración fría, dificultad para respirar, dolor en brazo izquierdo, mandíbula o espalda sin golpe previo?",
+        "texto": "¿Tienes náuseas, sudor frío, dificultad para respirar, dolor en tu brazo izquierdo, mandíbula o espalda?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene uno o más de esos síntomas",
+            "respuesta": "Sí, tengo uno o más de esos síntomas",
             "siguiente": "infarto_probable"
           },
           {
@@ -2026,14 +2181,14 @@
       },
       {
         "id": "p4",
-        "texto": "¿La persona tiene antecedentes cardíacos (infarto previo, stent, angina)?",
+        "texto": "¿Tienes antecedentes cardíacos (infarto previo, stent, angina)?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene antecedentes cardíacos",
+            "respuesta": "Sí, tengo antecedentes cardíacos",
             "siguiente": "infarto_probable"
           },
           {
-            "respuesta": "No tiene antecedentes cardíacos conocidos",
+            "respuesta": "No tengo antecedentes cardíacos",
             "siguiente": "vigilar_dolor"
           }
         ]
@@ -2041,42 +2196,42 @@
     ],
     "protocolos": {
       "infarto_probable": {
-        "nombre": "Posible infarto: protocolo de emergencia",
+        "nombre": "Posible infarto — actúa ahora",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 INMEDIATAMENTE. No esperes a ver si mejora. El tiempo es músculo cardíaco.",
+            "texto": "Activa el SOS AHORA. No esperes a ver si mejora. Cada minuto es músculo cardíaco.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Sienta a la persona en posición cómoda, levemente reclinada (posición semisentada). No la acuestes completamente.",
+            "texto": "Siéntate en posición cómoda, levemente reclinado/a. No te acuestes completamente.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Afloja ropa ajustada: corbata, cinturón, cuello de la camisa.",
+            "texto": "Afloja tu ropa: corbata, cinturón, botones del pecho.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Si la persona no es alérgica a la aspirina y está consciente, puede masticar (no tragar) 300 mg de aspirina.",
+            "texto": "Si no eres alérgico/a a la aspirina y estás consciente, mastica (no tragues) 300 mg.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Si tiene nitroglicerina prescrita por su médico, puede usarla según su pauta.",
+            "texto": "Si tienes nitroglicerina prescrita, úsala según tu pauta.",
             "timer": null
           },
           {
             "n": 6,
-            "texto": "Si la persona pierde la consciencia y deja de respirar, inicia RCP.",
+            "texto": "No te muevas. Mantén el celular en la mano y no cuelgues si el 911 te llama.",
             "timer": null
           }
         ]
       },
       "vigilar_dolor": {
-        "nombre": "Dolor de pecho breve sin antecedentes: vigilar",
+        "nombre": "Dolor breve sin antecedentes — vigílate",
         "pasos": [
           {
             "n": 1,
@@ -2085,37 +2240,37 @@
           },
           {
             "n": 2,
-            "texto": "Pide a la persona que repose y evite esfuerzos por el resto del día.",
+            "texto": "Descansa y evita esfuerzos por el resto del día.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si el dolor vuelve, dura más de 5 minutos o aparece con otros síntomas, llama al 911 sin dudar.",
+            "texto": "Si el dolor vuelve, dura más de 5 minutos o aparece con otros síntomas, activa el SOS.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Busca evaluación médica hoy mismo aunque el dolor haya cedido.",
+            "texto": "Busca evaluación médica hoy aunque el dolor haya cedido.",
             "timer": null
           }
         ]
       },
       "evaluar_otros": {
-        "nombre": "Síntomas leves: buscar evaluación",
+        "nombre": "Síntomas leves — busca evaluación",
         "pasos": [
           {
             "n": 1,
-            "texto": "Los síntomas actuales son inespecíficos, pero en el contexto cardiaco siempre es mejor evaluar.",
+            "texto": "Los síntomas actuales son inespecíficos, pero en el contexto cardíaco es mejor evaluarse.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Acude a urgencias si la persona tiene más de 45 años, tabaquismo, diabetes o presión alta.",
+            "texto": "Ve a urgencias si tienes más de 45 años, eres fumador/a, diabético/a o con presión alta.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si en cualquier momento aparece dolor de pecho o dificultad para respirar, llama al 911.",
+            "texto": "Si aparece dolor de pecho o dificultad para respirar, activa el SOS.",
             "timer": null
           }
         ]
@@ -2125,7 +2280,7 @@
       "En mujeres el infarto puede presentarse sin dolor de pecho intenso",
       "Fatiga extrema sin razón aparente puede ser el único síntoma",
       "Náuseas o sensación de indigestión que no cede",
-      "Dolor en la mandíbula, cuello o espalda alta",
+      "Dolor en mandíbula, cuello o espalda alta",
       "Dificultad para respirar sin esfuerzo previo",
       "Sudoración fría repentina sin fiebre ni calor"
     ],
@@ -2133,16 +2288,19 @@
   },
   {
     "id": "dolor-cabeza",
-    "titulo": "Dolor de cabeza",
+    "titulo": "Tengo un dolor de cabeza intenso",
     "urgencia": "medio",
     "llamar_911": false,
+    "tipo_protocolo": "autoatendible",
+    "seccion": 2,
+    "icono": "🤕",
     "preguntas": [
       {
         "id": "p1",
-        "texto": "¿Cómo empezó el dolor de cabeza?",
+        "texto": "¿Cómo empezó tu dolor de cabeza?",
         "opciones": [
           {
-            "respuesta": "De golpe, fue instantáneo y muy intenso ('el peor de mi vida')",
+            "respuesta": "De golpe, fue instantáneo y muy intenso, el peor de mi vida",
             "siguiente": "cabeza_emergencia"
           },
           {
@@ -2153,24 +2311,24 @@
       },
       {
         "id": "p2",
-        "texto": "¿El dolor va acompañado de fiebre, rigidez en el cuello o erupción en la piel?",
+        "texto": "¿Tu dolor va acompañado de fiebre y rigidez en el cuello?",
         "opciones": [
           {
-            "respuesta": "Sí, tiene fiebre y rigidez de cuello",
+            "respuesta": "Sí, tengo fiebre y no puedo bajar bien el mentón al pecho",
             "siguiente": "cabeza_meningitis"
           },
           {
-            "respuesta": "No, no hay fiebre ni rigidez",
+            "respuesta": "No, no tengo fiebre ni rigidez de cuello",
             "siguiente": "p3"
           }
         ]
       },
       {
         "id": "p3",
-        "texto": "¿Dónde se siente el dolor principalmente?",
+        "texto": "¿Dónde sientes el dolor principalmente?",
         "opciones": [
           {
-            "respuesta": "En un solo lado de la cabeza, pulsante, con náuseas o sensibilidad a la luz",
+            "respuesta": "En un solo lado, pulsante, con náuseas o sensibilidad a la luz",
             "siguiente": "migrana"
           },
           {
@@ -2178,11 +2336,11 @@
             "siguiente": "cefalea_tension"
           },
           {
-            "respuesta": "Detrás del ojo o en la sien, muy intenso y en rachas",
+            "respuesta": "Detrás de mi ojo o en la sien, muy intenso, en ataques",
             "siguiente": "cefalea_cluster"
           },
           {
-            "respuesta": "En la nuca, con sensación de presión o tensión cervical",
+            "respuesta": "En la nuca, con tensión en el cuello",
             "siguiente": "cefalea_cervicogenica"
           }
         ]
@@ -2190,92 +2348,87 @@
     ],
     "protocolos": {
       "cabeza_emergencia": {
-        "nombre": "Cefalea en trueno: emergencia médica",
+        "nombre": "Dolor de cabeza explosivo — urgencias ya",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911 o ve a urgencias inmediatamente. Un dolor de cabeza explosivo repentino puede indicar hemorragia cerebral.",
+            "texto": "Activa el SOS o ve a urgencias ya. Un dolor instantáneo y extremo puede indicar hemorragia cerebral.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "NO tomes analgésicos y esperes. Este tipo de dolor requiere tomografía urgente.",
+            "texto": "No tomes analgésicos y esperes. Este tipo de dolor requiere tomografía urgente.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Mantén a la persona en reposo, sin esfuerzos.",
+            "texto": "Recuéstate y no hagas esfuerzos.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Informa al médico el momento exacto en que inició y cómo fue su inicio.",
+            "texto": "Dile al médico exactamente cuándo empezó y cómo fue.",
             "timer": null
           }
         ]
       },
       "cabeza_meningitis": {
-        "nombre": "Posible meningitis: emergencia infecciosa",
+        "nombre": "Posible meningitis — urgencias ya",
         "pasos": [
           {
             "n": 1,
-            "texto": "Llama al 911. Fiebre + dolor de cabeza intenso + rigidez de cuello es la tríada clásica de meningitis.",
+            "texto": "Activa el SOS. Fiebre + dolor de cabeza intenso + rigidez de cuello es una emergencia.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Mantén a la persona en reposo y en un ambiente tranquilo.",
+            "texto": "Recuéstate en un lugar tranquilo mientras esperas al 911.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "NO intentes flexionar el cuello de la persona para 'probarlo'. Puede ser doloroso y no cambia la conducta.",
-            "timer": null
-          },
-          {
-            "n": 4,
-            "texto": "Si hay erupción en la piel que no desaparece al presionarla, es señal de alarma máxima.",
+            "texto": "Si notas manchas en tu piel que no desaparecen al presionarlas, es señal de máxima alarma.",
             "timer": null
           }
         ]
       },
       "migrana": {
-        "nombre": "Migraña: tratamiento en casa",
+        "nombre": "Migraña — manejo en casa",
         "pasos": [
           {
             "n": 1,
-            "texto": "Retírate a una habitación oscura y silenciosa. La luz y el ruido intensifican la migraña.",
+            "texto": "Retírate a una habitación oscura y silenciosa.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Aplica una compresa fría en la frente o la nuca.",
+            "texto": "Aplica una compresa fría en tu frente o nuca.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si tienes tratamiento abortivo prescrito (triptanes), tómalo al inicio del dolor, no cuando ya está en su pico.",
+            "texto": "Si tienes tratamiento prescrito (triptanes), tómalo al inicio del dolor, no en el pico.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Si no tienes tratamiento específico: ibuprofeno 400–600 mg o paracetamol 1 g con el estómago lleno.",
+            "texto": "Si no tienes tratamiento: ibuprofeno 400–600 mg o paracetamol 1 g con el estómago lleno.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Intenta dormir. El sueño es uno de los mejores aliados contra la migraña.",
+            "texto": "Intenta dormir. Es uno de los mejores aliados contra la migraña.",
             "timer": null
           },
           {
             "n": 6,
-            "texto": "Si dura más de 72 horas o es la peor migraña que has tenido, ve a urgencias.",
+            "texto": "Si dura más de 72 horas o es la peor migraña que hayas tenido, ve a urgencias.",
             "timer": null
           }
         ]
       },
       "cefalea_tension": {
-        "nombre": "Cefalea tensional: alivio en casa",
+        "nombre": "Cefalea tensional — alivio en casa",
         "pasos": [
           {
             "n": 1,
@@ -2284,77 +2437,72 @@
           },
           {
             "n": 2,
-            "texto": "Realiza estiramientos suaves de cuello y hombros.",
+            "texto": "Estira suavemente tu cuello y hombros.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Aplica calor en la nuca (paño caliente, ducha de agua tibia).",
+            "texto": "Aplica calor en la nuca: paño caliente o ducha de agua tibia.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Descansa en un ambiente tranquilo. Reduce la pantalla del celular o computadora.",
+            "texto": "Descansa y reduce el tiempo de pantalla.",
             "timer": null
           },
           {
             "n": 5,
-            "texto": "Si aparece más de 15 días al mes, consulta a un médico para descartar cefalea crónica.",
+            "texto": "Si aparece más de 15 días al mes, consulta a un médico.",
             "timer": null
           }
         ]
       },
       "cefalea_cluster": {
-        "nombre": "Cefalea en racimos: dolor muy intenso",
+        "nombre": "Cefalea en racimos — dolor muy intenso",
         "pasos": [
           {
             "n": 1,
-            "texto": "Es uno de los dolores más intensos conocidos. No subestimes a quien lo padece.",
+            "texto": "Es uno de los dolores más intensos conocidos. Es normal que no puedas quedarte quieto/a.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "A diferencia de la migraña, la persona con cefalea en racimos NO puede quedarse quieta. Suele moverse o agitarse.",
+            "texto": "Si tienes diagnóstico y tratamiento prescrito (sumatriptán, oxígeno), úsalo al inicio del ataque.",
             "timer": null
           },
           {
             "n": 3,
-            "texto": "Si tiene diagnóstico previo y tratamiento prescrito (sumatriptán, oxígeno), adminístralo al inicio del ataque.",
+            "texto": "Si es el primer episodio o no tienes diagnóstico, ve a urgencias para evaluación.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Si es el primer episodio o no tiene diagnóstico, ve a urgencias para evaluación.",
-            "timer": null
-          },
-          {
-            "n": 5,
             "texto": "Evita alcohol y tabaco durante las rachas: son desencadenantes conocidos.",
             "timer": null
           }
         ]
       },
       "cefalea_cervicogenica": {
-        "nombre": "Cefalea cervicogénica: origen en el cuello",
+        "nombre": "Dolor desde el cuello — manejo en casa",
         "pasos": [
           {
             "n": 1,
-            "texto": "El dolor nace en el cuello o nuca y sube hacia la cabeza. Suele empeorar con movimientos del cuello.",
+            "texto": "El dolor nace en tu cuello y sube a la cabeza. Empeora con movimientos del cuello.",
             "timer": null
           },
           {
             "n": 2,
-            "texto": "Aplica calor húmedo en la nuca y cuello durante 20 minutos.",
+            "texto": "Aplica calor húmedo en tu nuca y cuello durante 20 minutos.",
             "timer": 1200
           },
           {
             "n": 3,
-            "texto": "Toma ibuprofeno 400 mg si no hay contraindicación.",
+            "texto": "Toma ibuprofeno 400 mg si no tienes contraindicación.",
             "timer": null
           },
           {
             "n": 4,
-            "texto": "Evita posturas que mantengan el cuello inclinado hacia adelante por mucho tiempo.",
+            "texto": "Evita tener el cuello inclinado hacia adelante por mucho tiempo.",
             "timer": null
           },
           {
@@ -2368,9 +2516,9 @@
     "guia_tipos": {
       "migrana": "Unilateral, pulsante, náuseas, fotofobia. Dura 4–72h.",
       "tension": "Bilateral, en banda, sin náuseas. Leve-moderada.",
-      "cluster": "Periorbitario, muy intenso, unilateral, en rachas. Lagrimeo y rinorrea.",
+      "cluster": "Periorbitario, muy intenso, unilateral, en rachas.",
       "cervicogenica": "Nuca + cuello, empeora con movimiento cervical.",
-      "alarma": "Inicio explosivo, con fiebre/rigidez, tras golpe: IR A URGENCIAS"
+      "alarma": "Inicio explosivo, con fiebre/rigidez, o tras golpe: ir a urgencias"
     },
     "fuente": "Sociedad Española de Neurología, Guía de cefaleas 2023"
   }
